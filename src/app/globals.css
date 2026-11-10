@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1020;
+  --color-navy: #111a33;
+  --color-brand: #ff5a1f;
+  --color-brand-dark: #e04810;
+  --color-lime: #c6f432;
+  --color-mist: #f4f6fb;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Thai", sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+@layer base {
+  body { @apply bg-white text-ink antialiased; }
+}
+
+@utility container-x { @apply mx-auto w-full max-w-7xl px-5 md:px-8; }
+@utility btn { @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition; }
+@utility btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark; }
+@utility btn-lime { @apply btn bg-lime text-ink hover:brightness-95; }
+@utility btn-ghost { @apply btn border border-white/40 text-white hover:bg-white/10; }
+@utility btn-outline { @apply btn border border-ink/20 text-ink hover:bg-ink/5; }
+@utility eyebrow { @apply text-xs font-bold uppercase tracking-[0.2em] text-brand; }
+@utility h2 { @apply text-3xl font-extrabold tracking-tight md:text-4xl; }
+@utility field { @apply w-full rounded-lg border border-ink/15 bg-white px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20; }
+@utility label { @apply mb-1.5 block text-sm font-medium; }
