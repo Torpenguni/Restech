@@ -5,16 +5,6 @@ import NewsletterForm from "./forms/NewsletterForm";
 export default function Footer() {
   return (
     <footer className="bg-ink pb-24 text-white md:pb-28">
-      <div className="container-x border-b border-white/10 py-14 md:py-20">
-        <p className="eyebrow">{event.dateLabel} · {event.city}, Thailand</p>
-        <p className="font-display mt-4 max-w-4xl text-3xl font-semibold leading-[1.15] md:text-5xl">
-          See you in Bangkok — <em className="text-saffron">where the future of food service is served.</em>
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>
-          <Link href={cta.bookStand.href} className="btn-ghost uppercase">{cta.bookStand.label}</Link>
-        </div>
-      </div>
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Follow Us */}
         <div>
