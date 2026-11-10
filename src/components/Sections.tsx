@@ -30,14 +30,14 @@ export function Breadcrumb({ items }: { items: { label: string; href?: string }[
 }
 
 /** Inner-page hero: dark photographic band with editorial serif title. */
-export function PageHero({ eyebrow, title, intro, image = photos.expo, children }: { eyebrow: string; title: string; intro?: string; image?: string; children?: React.ReactNode }) {
+export function PageHero({ eyebrow, title, intro, image = photos.boothCrowd, children }: { eyebrow: string; title: string; intro?: string; image?: string; children?: React.ReactNode }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white">
       <img src={image} alt="" className="photo absolute inset-0 h-full w-full opacity-35" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
       <div className="container-x relative py-10 md:py-20">
         <Breadcrumb items={[{ label: eyebrow }, { label: title }]} />
-        <h1 className="font-display max-w-3xl text-[2rem] font-semibold leading-[1.1] sm:text-5xl md:text-6xl">{title}</h1>
+        <h1 className="font-display max-w-3xl text-[2rem] font-semibold leading-[1.1] sm:text-[2.5rem] md:text-5xl">{title}</h1>
         {intro && <p className="mt-5 max-w-2xl text-base text-white/75 md:text-lg">{intro}</p>}
         {children && <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">{children}</div>}
       </div>
@@ -145,7 +145,7 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
           <div className="relative">
-            <h3 className="font-display text-xl font-semibold leading-tight md:text-2xl">{it.title}</h3>
+            <h3 className="font-display text-lg font-semibold leading-tight md:text-xl">{it.title}</h3>
             <p className="mt-2 text-sm text-white/75">{it.desc}</p>
             <span className="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-saffron">Find out more →</span>
           </div>
@@ -187,7 +187,7 @@ export function SegmentGrid() {
 export function SocialStrip() {
   return (
     <div className="scroller md:grid-cols-3 md:gap-4">
-      {[photos.booth, photos.expo, photos.matching].map((src, i) => (
+      {[photos.boothCrowd, photos.exhibitorDemo, photos.robotDemo].map((src, i) => (
         <a key={i} href="#" className="relative flex aspect-square items-end overflow-hidden rounded-2xl bg-navy p-5 text-sm text-white">
           <img src={src} alt="" className="photo absolute inset-0 h-full w-full" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
@@ -198,10 +198,13 @@ export function SocialStrip() {
   );
 }
 
+export const realTestimonials = testimonials.filter((t) => !t.quote.startsWith("Placeholder"));
+
 export function Testimonials() {
+  if (!realTestimonials.length) return null;
   return (
     <div className="scroller md:grid-cols-3 md:gap-5">
-      {testimonials.map((t, i) => (
+      {realTestimonials.map((t, i) => (
         <figure key={i} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-white md:p-7">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron">{t.type}</p>
           <span className="font-display mt-3 text-5xl leading-none text-brand md:text-6xl">“</span>
@@ -225,21 +228,19 @@ export function SupportedBy() {
   );
 }
 
+/** Sponsorship packages — tier names + enquiry CTA (no empty logo slots). */
 export function SponsorTiers() {
   return (
-    <div className="space-y-4 md:space-y-8">
-      {sponsorTiers.map((t) => (
-        <div key={t.tier}>
-          <p className="mb-3 text-center text-xs font-bold uppercase tracking-widest text-ink/45">{t.tier}</p>
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-            {Array.from({ length: t.count }).map((_, i) => (
-              <div key={i} className="flex h-11 w-[30%] items-center justify-center rounded-xl border border-dashed border-ink/20 bg-white/60 text-[10px] text-ink/40 md:h-20 md:w-40 md:text-xs">
-                Your logo here
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div className="mx-auto flex max-w-4xl flex-col items-center gap-5 rounded-3xl border border-line bg-white/70 px-6 py-8 text-center md:flex-row md:justify-between md:px-10 md:text-left">
+      <div>
+        <p className="text-lg font-semibold md:text-xl">Sponsorship packages are open for {event.edition}</p>
+        <p className="mt-2 flex flex-wrap justify-center gap-2 md:justify-start">
+          {sponsorTiers.map((t) => (
+            <span key={t.tier} className="rounded-full border border-ink/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink/70">{t.tier.replace(/ Sponsors?$/i, "")}</span>
+          ))}
+        </p>
+      </div>
+      <Link href={cta.sponsor.href} className="btn-primary shrink-0 uppercase">Request sponsorship deck</Link>
     </div>
   );
 }
@@ -247,16 +248,13 @@ export function SponsorTiers() {
 /** Editorial mosaic of real event photography. */
 export function PhotoGrid() {
   const shots = [
-    { src: photos.crowd, cls: "col-span-2 row-span-2" },
-    { src: photos.stage, cls: "" },
+    { src: photos.stageCrowd, cls: "col-span-2 row-span-2" },
+    { src: photos.mainStage, cls: "" },
     { src: photos.networking, cls: "" },
-    { src: "/images/atmosphere-2024.webp", cls: "" },
-    { src: photos.speaker, cls: "" },
-    { src: photos.booth, cls: "col-span-2" },
-    { src: photos.hall, cls: "col-span-2" },
+    { src: photos.boothCrowd, cls: "col-span-2" },
   ];
   return (
-    <div className="grid auto-rows-[9rem] grid-cols-2 gap-3 md:auto-rows-[12rem] md:grid-cols-4">
+    <div className="grid auto-rows-[6.5rem] grid-cols-2 gap-2 md:auto-rows-[12rem] md:grid-cols-4 md:gap-3">
       {shots.map(({ src, cls }) => (
         <img key={src} src={src} alt="" loading="lazy" className={`photo h-full w-full rounded-xl ${cls}`} />
       ))}
@@ -320,7 +318,7 @@ export function NewsletterBlock() {
 export function CtaBand({ title, text, mode = "both" }: { title: string; text?: string; mode?: "register" | "exhibit" | "both" }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white">
-      <img src={photos.spread} alt="" className="photo absolute inset-0 h-full w-full opacity-25" loading="lazy" />
+      <img src={photos.stageCrowd} alt="" className="photo absolute inset-0 h-full w-full opacity-25" loading="lazy" />
       <div className="container-x relative flex flex-col items-start justify-between gap-5 py-10 md:flex-row md:items-center md:py-14">
         <div>
           <h2 className="font-display text-2xl font-semibold md:text-4xl">{title}</h2>

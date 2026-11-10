@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CardGrid, CtaBand, PageHero, SectionHead } from "@/components/Sections";
-import { cta, event, stats, whyVisit } from "@/lib/site";
+import { cta, event, photos, stats, whyVisit } from "@/lib/site";
 
 export const metadata = { title: "Why Visit" };
 
@@ -21,11 +21,12 @@ export default function WhyVisit() {
         <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>
         <Link href={cta.exhibitorList.href} className="btn-blue uppercase">View Exhibitor List</Link>
       </PageHero>
-      <section className="py-16">
+      <section className="section-y">
         <div className="container-x">
           <div className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className={`aspect-square items-center justify-center rounded-2xl bg-ink/5 text-xs text-ink/40 ${i === 4 ? "hidden md:flex" : "flex"}`}>Photo</div>
+            {[photos.showFloor, photos.mainStage, photos.exhibitorDemo, photos.robotDemo, photos.networking].map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={src} src={src} alt="" loading="lazy" className={`photo aspect-square w-full rounded-2xl ${i === 4 ? "hidden md:block" : ""}`} />
             ))}
           </div>
           <p className="mx-auto max-w-3xl text-center text-base text-ink/70 md:text-lg">

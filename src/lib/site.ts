@@ -20,41 +20,21 @@ export const event = {
   phone: "", // TODO: not published on current site
 };
 
-// Photography.
-// - px(): real Penguin X event photos, hot-linked from penguinx.co.
-//   TODO: copy these files into /public/images so the site doesn't depend on penguinx.co file names.
-// - food(): free-licence food & kitchen photography (Unsplash licence). TODO: replace with own
-//   Restech / exhibitor food shots when available.
-const px = (path: string) => `https://www.penguinx.co/${encodeURI(path)}`;
-const food = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?w=${w}&q=70&auto=format&fit=crop`;
+// Photography — real Restech event photos, stored in /public/images/real (from restechexpo.com gallery).
+const real = (name: string) => `/images/real/${name}.webp`;
 export const photos = {
-  heroKitchen: food("1600565193348-f74bd3c7ccdf", 2000),
-  spread: food("1504674900247-0877df9cc836"),
-  fineDining: food("1414235077428-338989a2e8c0"),
-  dimSum: food("1563245372-f21724e3856d"),
-  curry: food("1559847844-5315695dadae"),
-  bowl: food("1546069901-ba9599a7e63c"),
-  steak: food("1600891964092-4316c288032e"),
-  chef: food("1577219491135-ce391730fb2c"),
-  prep: food("1551218808-94e220e084d2"),
-  plating: food("1581349485608-9469926a8e5e"),
-  produce: food("1606787366850-de6330128bfc"),
-  dining: food("1555396273-367ea4eb4db5"),
-  sharing: food("1466978913421-dad2ebd01d17"),
-  bar: food("1514933651103-005eec06c04b"),
-  franchise: food("1590846406792-0adc7f938f1d"),
-  future: food("1517248135467-4c7edcad34c4"),
-  // Penguin X events
-  expo: px("Selected wroks/Event.jpg"),
-  stage: px("cover.JPG"),
-  speaker: px("services/speaker.jpg"),
-  matching: px("services/Business matching .jpg"),
-  booth: px("Selected wroks/Solution.jpg"),
-  crowd: px("Community/community1.jpg"),
-  hall: px("Community/community5.JPG"),
-  networking: px("Community/community8.JPG"),
-  dinner: px("Community/community6.JPG"),
-  meetup: px("Community/community4.JPG"),
+  hallOverview: real("hall-overview"),
+  showFloor: real("future-zone"),
+  boothCrowd: real("booth-crowd"),
+  exhibitorDemo: real("exhibitor-demo"),
+  robotDemo: real("robot-demo"),
+  mainStage: real("main-stage-audience"),
+  stageCrowd: real("stage-crowd"),
+  talkStage: real("talk-stage-speakers"),
+  seminar: real("seminar-area"),
+  networking: real("networking"),
+  vipWalk: real("vip-walk"),
+  photoWall: real("photo-wall"),
 };
 
 // Sector ticker under the hero
@@ -238,19 +218,19 @@ export const segmentGroups: { title: string; key: string; items: Segment[] }[] =
     title: "Restaurant Technology",
     key: "restaurant-technology",
     items: [
-      { slug: "management-technology", name: "Management Technology", icon: "💻", desc: "POS, back-office, inventory, HR and multi-branch management systems.", image: photos.dining },
-      { slug: "marketing", name: "Marketing & IT Marketing Technology", icon: "📣", desc: "CRM, loyalty, online ordering, social and digital marketing tools.", image: photos.sharing },
-      { slug: "financial-systems", name: "Finance & Financial Technology", icon: "💳", desc: "Payments, accounting, lending and financial services for restaurants.", image: photos.bar },
+      { slug: "management-technology", name: "Management Technology", icon: "💻", desc: "POS, back-office, inventory, HR and multi-branch management systems.", image: photos.exhibitorDemo },
+      { slug: "marketing", name: "Marketing & IT Marketing Technology", icon: "📣", desc: "CRM, loyalty, online ordering, social and digital marketing tools.", image: photos.photoWall },
+      { slug: "financial-systems", name: "Finance & Financial Technology", icon: "💳", desc: "Payments, accounting, lending and financial services for restaurants.", image: photos.vipWalk },
     ],
   },
   {
     title: "Restaurant Operations",
     key: "restaurant-operations",
     items: [
-      { slug: "kitchen-equipment", name: "Kitchen Equipment", icon: "🍳", desc: "Commercial kitchen equipment, automation and smart appliances.", image: photos.plating },
-      { slug: "suppliers", name: "Services & Suppliers", icon: "📦", desc: "Ingredients, packaging, services and suppliers for restaurants.", image: photos.produce },
-      { slug: "franchise", name: "Franchise Businesses", icon: "🏪", desc: "Franchise brands and expansion opportunities.", image: photos.franchise },
-      { slug: "future-restaurant-models", name: "Future Restaurant Models", icon: "🚀", desc: "Concept restaurants showing where the industry is heading.", image: photos.future },
+      { slug: "kitchen-equipment", name: "Kitchen Equipment", icon: "🍳", desc: "Commercial kitchen equipment, automation and smart appliances.", image: photos.seminar },
+      { slug: "suppliers", name: "Services & Suppliers", icon: "📦", desc: "Ingredients, packaging, services and suppliers for restaurants.", image: photos.boothCrowd },
+      { slug: "franchise", name: "Franchise Businesses", icon: "🏪", desc: "Franchise brands and expansion opportunities.", image: photos.networking },
+      { slug: "future-restaurant-models", name: "Future Restaurant Models", icon: "🚀", desc: "Concept restaurants showing where the industry is heading.", image: photos.showFloor },
     ],
   },
 ];
@@ -260,10 +240,10 @@ export type Card = { title: string; desc: string; href: string; image?: string }
 
 // "What's New" spotlight cards
 export const whatsNew: Card[] = [
-  { title: "Restaurant of the Future", desc: "Future restaurant concepts showing where the industry is heading.", href: "/restaurant-of-the-future", image: photos.future },
-  { title: "Main Stage Sessions", desc: "Keynotes and panels from restaurant industry leaders.", href: "/main-stage", image: photos.stage },
-  { title: "Talk Stage Sessions", desc: "Practical talks on technology, marketing and management.", href: "/talk-stage", image: photos.speaker },
-  { title: "Business Matching", desc: "Pre-arranged meetings between restaurant owners and suppliers.", href: "/business-matching", image: photos.matching },
+  { title: "Restaurant of the Future", desc: "Future restaurant concepts showing where the industry is heading.", href: "/restaurant-of-the-future", image: photos.robotDemo },
+  { title: "Main Stage Sessions", desc: "Keynotes and panels from restaurant industry leaders.", href: "/main-stage", image: photos.mainStage },
+  { title: "Talk Stage Sessions", desc: "Practical talks on technology, marketing and management.", href: "/talk-stage", image: photos.talkStage },
+  { title: "Business Matching", desc: "Pre-arranged meetings between restaurant owners and suppliers.", href: "/business-matching", image: photos.vipWalk },
 ];
 
 // "New at Restech" feature cards

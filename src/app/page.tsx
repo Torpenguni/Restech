@@ -8,7 +8,6 @@ import {
   SpotlightCards,
   SponsorTiers,
   SupportedBy,
-  Testimonials,
   TripleCta,
 } from "@/components/Sections";
 import { cta, event, newAt, photos, segments, stats, whatsNew, whyExhibit } from "@/lib/site";
@@ -23,20 +22,20 @@ const audience = [
   { t: "Business matching", icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></> },
 ];
 
-// Homepage — 13 blocks. Detail lives on inner pages; quick links and newsletter live in the footer.
+// Homepage — 12 blocks. Testimonials return once real quotes exist (see Testimonials in Sections.tsx). Detail lives on inner pages; quick links and newsletter live in the footer.
 export default function Home() {
   return (
     <>
       {/* 1. Hero — full-bleed kitchen photography, editorial headline, event facts card */}
       <section className="grain relative overflow-hidden bg-ink text-white">
-        <img src={photos.heroKitchen} alt="Chef cooking over an open flame in a commercial kitchen" className="photo absolute inset-0 h-full w-full" fetchPriority="high" />
+        <img src={photos.hallOverview} alt="Restech show floor at IMPACT Muang Thong Thani" className="photo absolute inset-0 h-full w-full" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
         <div className="container-x relative grid gap-8 pb-10 pt-8 md:gap-12 md:pb-20 md:pt-20 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <p className="eyebrow !text-saffron">International restaurant &amp; food-service trade expo</p>
             <img src="/images/logo-2027.webp" alt={event.fullName} className="mt-6 hidden w-72 md:block" />
-            <h1 className="font-display mt-4 text-[2.1rem] font-semibold leading-[1.1] sm:text-5xl md:mt-8 md:text-6xl">
+            <h1 className="font-display mt-4 max-w-[15ch] text-[2rem] font-semibold leading-[1.1] sm:text-[2.75rem] md:mt-8 md:text-[3.25rem] lg:text-[3.5rem]">
               The future of food service is served in <em className="text-saffron">Bangkok.</em>
             </h1>
             <p className="mt-4 max-w-xl text-[15px] text-white/75 md:mt-6 md:text-lg">
@@ -105,9 +104,9 @@ export default function Home() {
             </div>
           </div>
           <div className="grid h-[15rem] grid-cols-5 grid-rows-6 gap-2 sm:h-[22rem] md:h-[32rem] md:gap-3">
-            <img src={photos.expo} alt="Crowded aisles between exhibitor stands" className="photo col-span-3 row-span-6 h-full w-full rounded-2xl" loading="lazy" />
-            <img src={photos.hall} alt="Packed seminar hall during a keynote" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
-            <img src={photos.networking} alt="Restaurant owners networking over dinner" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.showFloor} alt="Visitors filling the aisles of the Restech show floor" className="photo col-span-3 row-span-6 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.mainStage} alt="Full audience at the Restech Main Stage" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.boothCrowd} alt="Visitors at an exhibitor demo counter" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
           </div>
         </div>
       </section>
@@ -130,7 +129,7 @@ export default function Home() {
                     {icon}
                   </svg>
                 </span>
-                <span className="text-[13px] font-semibold leading-snug md:text-base">{t}</span>
+                <span className="text-[13px] font-semibold leading-snug md:text-[15px]">{t}</span>
               </li>
             ))}
           </ul>
@@ -198,27 +197,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. Voices from the show floor (exhibitor + visitor testimonials) */}
-      <section className="bg-ink section-y text-white">
-        <div className="container-x">
-          <SectionHead light eyebrow="Testimonials" title="Voices from the show floor" />
-          <Testimonials />
-        </div>
-      </section>
-
       {/* 11. Restech 2024 highlights + organiser */}
       <section className="bg-mist section-y">
         <div className="container-x">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHead eyebrow="Past edition" title="Restech 2024 highlights" intro={`Organised by ${event.organiser.replace(" Co., Ltd.", "")} — building Thailand's F&B ecosystem through media, community, education and events.`} />
+            <SectionHead eyebrow="Past edition" title="Highlights from past editions" intro={`Organised by ${event.organiser.replace(" Co., Ltd.", "")} — building Thailand's F&B ecosystem through media, community, education and events.`} />
             <Link href="/media-gallery" className="btn-outline hidden shrink-0 uppercase md:mb-10 md:inline-flex">View snapshots</Link>
           </div>
           <div className="grid auto-rows-[6.5rem] grid-cols-2 gap-2 md:auto-rows-[12rem] md:grid-cols-4 md:gap-3">
             {[
-              { src: "/images/atmosphere-2024.webp", cls: "col-span-2 row-span-2" },
-              { src: "/images/visitor.webp", cls: "col-span-2" },
-              { src: "/images/exhibitor.webp", cls: "" },
-              { src: "/images/kv-about.webp", cls: "" },
+              { src: photos.stageCrowd, cls: "col-span-2 row-span-2" },
+              { src: photos.seminar, cls: "col-span-2" },
+              { src: photos.exhibitorDemo, cls: "" },
+              { src: photos.photoWall, cls: "" },
             ].map(({ src, cls }) => (
               <img key={src} src={src} alt="" loading="lazy" className={`photo h-full w-full rounded-xl ${cls}`} />
             ))}
@@ -246,11 +237,11 @@ export default function Home() {
 
       {/* 14. Final call to action — footer (quick links, newsletter) follows */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <img src={photos.chef} alt="" className="photo absolute inset-0 h-full w-full opacity-40" loading="lazy" />
+        <img src={photos.stageCrowd} alt="" className="photo absolute inset-0 h-full w-full opacity-40" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
         <div className="container-x relative flex flex-col items-center py-12 text-center md:py-20">
           <p className="eyebrow !text-saffron">{event.dateLabel} · {event.city}</p>
-          <h2 className="font-display mt-3 text-3xl font-semibold md:mt-4 md:text-6xl">Be part of <em className="text-saffron">{event.edition}</em></h2>
+          <h2 className="font-display mt-3 text-[1.75rem] font-semibold md:mt-4 md:text-5xl">Be part of <em className="text-saffron">{event.edition}</em></h2>
           <p className="mt-5 max-w-xl text-white/75">{event.theme} — limited stands available in each zone.</p>
           <div className="mt-7 w-full md:mt-10 md:w-auto"><TripleCta /></div>
         </div>

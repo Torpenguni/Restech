@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cta, event } from "@/lib/site";
 
-/** Registration popup (shown once per session after a short delay), as on FHA. */
+/** Registration popup — once per session, on exit intent or after 45s. */
 export default function RegisterPopup() {
   const [show, setShow] = useState(false);
+  // Low-pressure: only on exit intent (cursor leaves towards the tab bar) or after 45s of browsing.
   useEffect(() => {
     if (sessionStorage.getItem("restech-popup")) return;
-    const t = setTimeout(() => setShow(true), 6000);
-    return () => clearTimeout(t);
+    const open = () => setShow(true);
+    const t = setTimeout(open, 45000);
+    const onLeave = (e: MouseEvent) => { if (e.clientY <= 0) open(); };
+    document.addEventListener("mouseout", onLeave);
+    return () => { clearTimeout(t); document.removeEventListener("mouseout", onLeave); };
   }, []);
   const dismiss = () => {
     sessionStorage.setItem("restech-popup", "1");

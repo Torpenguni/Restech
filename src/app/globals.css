@@ -34,7 +34,8 @@ h1 em, h2 em, p em { font-style: normal; }
 @utility btn-ghost { @apply btn border border-white/40 text-white hover:bg-white/10; }
 @utility btn-outline { @apply btn border border-ink/20 text-ink hover:bg-ink/5; }
 @utility eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-brand md:text-xs; }
-@utility h2 { @apply font-display text-[1.7rem] font-semibold leading-[1.15] sm:text-4xl md:text-[2.75rem]; }
+/* Type scale: h1 32→56px · h2 26→40px · h3 16→20px · body 15→16px · eyebrow 11→12px */
+@utility h2 { @apply font-display text-[1.625rem] font-semibold leading-[1.15] sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem]; }
 @utility field { @apply w-full rounded-lg border border-ink/15 bg-white px-4 py-3 text-base md:text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20; }
 @utility label { @apply mb-1.5 block text-sm font-medium; }
 @utility bg-hero { background: radial-gradient(70% 60% at 85% 100%, rgb(233 90 24 / 0.28), transparent 60%), linear-gradient(180deg, #0b0f24 0%, #141a3d 100%); }

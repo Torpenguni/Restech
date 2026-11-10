@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CardGrid, CtaBand, PageHero, SectionHead, Testimonials } from "@/components/Sections";
+import { CardGrid, CtaBand, PageHero, SectionHead } from "@/components/Sections";
 import { cta, whyExhibit } from "@/lib/site";
 
 export const metadata = { title: "Exhibit with Us" };
@@ -46,15 +46,6 @@ export default function ExhibitWithUs() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-      <section className="py-6">
-        <p className="container-x text-center text-xs text-ink/50">Government incentive / endorsement details for exhibitors (e.g. trade promotion support) — TBC.</p>
-      </section>
-      <section className="bg-mist section-y">
-        <div className="container-x">
-          <SectionHead title="Voices from the Show Floor" />
-          <Testimonials />
         </div>
       </section>
       <CtaBand title="Secure your stand before your competitors do" mode="exhibit" />
