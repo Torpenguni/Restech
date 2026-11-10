@@ -4,23 +4,23 @@
 
 export const event = {
   name: "Restech",
-  edition: "Restech 2026",
-  fullName: "Restech – Restaurant Technology Expo 2026",
+  edition: "Restech 2027",
+  fullName: "Restech – Restaurant Technology Expo 2027",
   theme: "Step Into The Future",
   tagline: "Restaurant Technology Expo — Technology and Management Exhibition for Restaurant Businesses",
-  startDate: "2026-08-27T09:30:00+07:00",
-  dateLabel: "27–29 August 2026",
+  startDate: "2027-08-27T09:30:00+07:00", // TODO: confirm 2027 dates
+  dateLabel: "27–29 August 2027",
   hours: "09:30–19:00", // TODO: site shows both 19:00 and 19:30 — confirm
-  venue: "IMPACT Muang Thong Thani, Exhibition Hall 5–6",
+  venue: "IMPACT Muang Thong Thani, Exhibition Hall 5–6", // TODO: confirm 2027 venue
   city: "Bangkok",
   organiser: "Penguin X Co., Ltd.",
   address: "8/299, 8/300 Room 205, L1 (Tops side), The Lighthouse Building, Charoen Nakhon Rd, Khlong Ton Sai, Khlong San, Bangkok 10600",
-  hashtags: ["#Restech2026", "#Restech", "#StepIntoTheFuture"],
+  hashtags: ["#Restech2027", "#Restech", "#StepIntoTheFuture"],
   email: "info@penguinx.co",
   phone: "", // TODO: not published on current site
 };
 
-// "Restech 2026 by the Numbers" — visitors from restechexpo.com; exhibitor count = sum of zone counts on
+// "Restech 2027 by the Numbers" — visitors from restechexpo.com; exhibitor count = sum of zone counts on
 // the current homepage (35+40+20+25+20+10). TODO: confirm both with the sales team.
 export const stats = [
   { value: "10,000+", label: "Visitors" },
@@ -269,7 +269,7 @@ export const credibility = [
 ];
 
 export const faqs = [
-  { q: "What is Restech 2026?", a: "Restech – Restaurant Technology Expo 2026 is a technology and management exhibition for restaurant businesses, held 27–29 August 2026 at IMPACT Muang Thong Thani, Hall 5–6." },
+  { q: "What is Restech 2027?", a: "Restech – Restaurant Technology Expo 2027 is a technology and management exhibition for restaurant businesses, held 27–29 August 2027 at IMPACT Muang Thong Thani, Hall 5–6." },
   { q: "Who attends Restech?", a: "Restaurant owners, chain operators, franchise groups, hotel F&B leaders, and heads of operations, IT, finance, marketing and procurement." },
   { q: "What types of suppliers can visitors meet?", a: "POS and payments, ordering and delivery, kitchen automation, CRM and loyalty, supply chain, AI and data, workforce and food-safety technology providers." },
   { q: "Can local technology companies and startups exhibit?", a: "Yes. Local and international companies can book a stand, and early-stage companies can apply for Startup Alley." },

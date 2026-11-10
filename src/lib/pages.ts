@@ -21,8 +21,8 @@ const p = (eyebrow: string, title: string, intro: string, sections: InfoPage["se
 
 export const infoPages: Record<string, InfoPage> = {
   // The Event — Overview
-  "about-restech": p("The Event", "About Restech", "Restech – Restaurant Technology Expo 2026: Step Into The Future. A technology and management exhibition for restaurant businesses.", [
-    { heading: "Date & venue", body: "27–29 August 2026, 09:30–19:00, IMPACT Muang Thong Thani, Exhibition Hall 5–6." },
+  "about-restech": p("The Event", "About Restech", "Restech – Restaurant Technology Expo 2027: Step Into The Future. A technology and management exhibition for restaurant businesses.", [
+    { heading: "Date & venue", body: "27–29 August 2027, 09:30–19:00, IMPACT Muang Thong Thani, Exhibition Hall 5–6." },
     { heading: "Who exhibits", body: "Restaurant technology · Kitchen equipment · IT marketing technology · Services and suppliers for restaurants · Finance and financial technology · Franchise businesses." },
     { heading: "Who visits", body: "More than 10,000 visitors: restaurant and café owners, restaurant chains and hotel businesses, technology and innovation enthusiasts, and general attendees." },
     { heading: "Organiser", body: "Penguin X Co., Ltd. — 8/299, 8/300 Room 205, L1 (Tops side), The Lighthouse Building, Charoen Nakhon Rd, Khlong Ton Sai, Khlong San, Bangkok 10600." },
@@ -60,7 +60,7 @@ export const infoPages: Record<string, InfoPage> = {
   "franchise-zone": p("Spotlight", "Franchise Zone", "Franchise brands and expansion opportunities for investors and operators.", [
     { heading: "Who should visit", body: "Investors and entrepreneurs looking for a restaurant franchise, and brands looking for franchisees." },
   ], { cta: "both" }),
-  "event-highlight": p("Spotlight", "Restech 2026 Event Highlight", "Returning with the biggest event for restaurant owners — Restech – Restaurant Technology Expo 2026: Step Into The Future.", [
+  "event-highlight": p("Spotlight", "Restech 2027 Event Highlight", "Returning with the biggest event for restaurant owners — Restech – Restaurant Technology Expo 2027: Step Into The Future.", [
     { heading: "Key milestones", body: "Launch of Future Restaurant Concepts · Spotlight on Industry Leaders · Introduction of Innovative Technologies · Business Matching Opportunities · Focus on Sustainability · Community Engagement Activities." },
   ], { cta: "both" }),
 

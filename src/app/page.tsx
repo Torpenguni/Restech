@@ -27,7 +27,7 @@ export default function Home() {
       <section className="bg-hero relative overflow-hidden text-white">
         <div className="container-x relative flex flex-col items-center py-20 text-center md:py-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.webp" alt={event.fullName} className="w-full max-w-xl" />
+          <img src="/images/logo-2027.webp" alt={event.fullName} className="w-full max-w-xl" />
           <p className="mt-6 text-lg md:text-xl">
             {event.dateLabel} <span className="text-brand">|</span> {event.venue}
           </p>
@@ -92,9 +92,9 @@ export default function Home() {
       {/* 7. Show floor / floor plan */}
       <section className="bg-mist py-20">
         <div className="container-x">
-          <SectionHead center title="IMPACT Hall 5–6 Floor Plan" intro="Draft floor plan — book early to secure the best locations." />
+          <SectionHead center title="IMPACT Hall 5–6 Floor Plan" intro="Reference floor plan from Restech 2026 — the 2027 layout will be announced soon." />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/floor-plan.webp" alt="Restech 2026 floor plan, IMPACT Hall 5–6" className="w-full rounded-3xl shadow-lg" loading="lazy" />
+          <img src="/images/floor-plan.webp" alt="Restech 2026 floor plan (reference), IMPACT Hall 5–6" className="w-full rounded-3xl shadow-lg" loading="lazy" />
         </div>
       </section>
 
@@ -137,7 +137,7 @@ export default function Home() {
       {/* 13. Be Part of ... — 3 CTAs */}
       <section className="bg-hero py-20 text-white">
         <div className="container-x flex flex-col items-center text-center">
-          <h2 className="text-4xl font-semibold md:text-5xl">Be Part of <span className="text-brand">Restech 2026</span></h2>
+          <h2 className="text-4xl font-semibold md:text-5xl">Be Part of <span className="text-brand">Restech 2027</span></h2>
           <p className="mt-4 max-w-xl text-white/70">Step Into The Future — limited stands available in each zone.</p>
           <div className="mt-8"><TripleCta /></div>
         </div>

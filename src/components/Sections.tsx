@@ -189,7 +189,7 @@ export function SupportedBy() {
     <div className="mb-14 text-center">
       <p className="mb-6 text-xl font-medium text-electric">Official Supported by</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/supported-by.png" alt="Official supporters of Restech 2026" className="mx-auto w-full max-w-3xl" loading="lazy" />
+      <img src="/images/supported-by.png" alt="Official supporters of Restech 2027" className="mx-auto w-full max-w-3xl" loading="lazy" />
     </div>
   );
 }

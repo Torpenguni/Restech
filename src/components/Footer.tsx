@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Follow Us */}
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.webp" alt="Restech 2026" className="h-16 w-auto" />
+          <img src="/images/logo-2027.webp" alt="Restech 2027" className="h-16 w-auto" />
           <p className="mt-3 text-xs text-white/60">Organised by {event.organiser}</p>
           <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-widest text-white/50">Follow Us</p>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">

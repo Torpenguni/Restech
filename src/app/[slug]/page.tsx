@@ -33,7 +33,7 @@ export default async function InfoPage({ params }: { params: Promise<{ slug: str
           ))}
         </div>
       </section>
-      {page.cta && <CtaBand title="Join us at Restech 2026" mode={page.cta} />}
+      {page.cta && <CtaBand title="Join us at Restech 2027" mode={page.cta} />}
     </>
   );
 }

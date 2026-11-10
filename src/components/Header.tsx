@@ -17,7 +17,7 @@ export default function Header() {
       <div className="container-x flex h-20 items-center justify-between gap-6" onMouseLeave={() => setOpen(null)}>
         <Link href="/" className="shrink-0" onClick={close}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.webp" alt="Restech 2026 — Restaurant Technology Expo" className="h-12 w-auto" />
+          <img src="/images/logo-2027.webp" alt="Restech 2027 — Restaurant Technology Expo" className="h-12 w-auto" />
         </Link>
 
         {/* Mega menu — 5 top-level items */}
