@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-ink pb-20 text-white md:pb-0">
       <div className="container-x border-b border-white/10 py-14 md:py-20">
         <p className="eyebrow">{event.dateLabel} · {event.city}, Thailand</p>
-        <p className="font-display mt-4 max-w-4xl text-4xl font-medium leading-[1.05] md:text-6xl">
+        <p className="font-display mt-4 max-w-4xl text-3xl font-semibold leading-[1.15] md:text-5xl">
           See you in Bangkok — <em className="text-saffron">where the future of food service is served.</em>
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

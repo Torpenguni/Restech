@@ -49,7 +49,7 @@ export const photos = {
   stage: px("cover.JPG"),
   speaker: px("services/speaker.jpg"),
   matching: px("services/Business matching .jpg"),
-  booth: px("services/marketing strategy.jpg"),
+  booth: px("Selected wroks/Solution.jpg"),
   crowd: px("Community/community1.jpg"),
   hall: px("Community/community5.JPG"),
   networking: px("Community/community8.JPG"),

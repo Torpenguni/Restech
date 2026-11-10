@@ -37,7 +37,7 @@ export function PageHero({ eyebrow, title, intro, image = photos.expo, children 
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
       <div className="container-x relative py-16 md:py-24">
         <Breadcrumb items={[{ label: eyebrow }, { label: title }]} />
-        <h1 className="font-display max-w-3xl text-4xl font-medium leading-[1.05] sm:text-5xl md:text-6xl">{title}</h1>
+        <h1 className="font-display max-w-3xl text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl">{title}</h1>
         {intro && <p className="mt-5 max-w-2xl text-base text-white/75 md:text-lg">{intro}</p>}
         {children && <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">{children}</div>}
       </div>
@@ -79,7 +79,7 @@ export function CountdownBanner() {
       <div className="container-x flex flex-col items-center justify-between gap-6 py-10 text-center md:flex-row md:text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">{event.dateLabel} · {event.city}, Thailand</p>
-          <p className="font-display mt-2 text-3xl font-medium md:text-4xl">The countdown to {event.edition} has begun</p>
+          <p className="font-display mt-2 text-3xl font-semibold md:text-4xl">The countdown to {event.edition} has begun</p>
         </div>
         <div className="flex flex-col items-center gap-3">
           <Countdown date={event.startDate} />
@@ -98,7 +98,7 @@ export function StatsBar({ title = `${event.edition} by the numbers`, dark = fal
         <div className={`grid grid-cols-2 gap-y-8 md:grid-cols-4 md:divide-x ${dark ? "md:divide-white/10" : "md:divide-ink/10"}`}>
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-5xl font-medium md:text-6xl">{s.value}</div>
+              <div className="font-display text-5xl font-semibold md:text-6xl">{s.value}</div>
               <div className={`mt-2 text-xs font-semibold uppercase tracking-[0.18em] ${dark ? "text-white/60" : "text-ink/55"}`}>{s.label}</div>
             </div>
           ))}
@@ -116,7 +116,7 @@ export function CardGrid({ items, numbered = true, dark = false }: { items: { ti
       {items.map((it, i) => {
         const inner = (
           <>
-            {numbered && <span className="font-display text-3xl italic text-brand">{String(i + 1).padStart(2, "0")}</span>}
+            {numbered && <span className="font-display text-3xl text-brand">{String(i + 1).padStart(2, "0")}</span>}
             <h3 className="mt-3 text-lg font-semibold">{it.title}</h3>
             <p className={`mt-2 text-sm leading-relaxed ${dark ? "text-white/65" : "text-ink/65"}`}>{it.desc}</p>
             {it.href && <span className="mt-5 inline-block text-xs font-bold uppercase tracking-widest text-brand">Find out more →</span>}
@@ -145,7 +145,7 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
           <div className="relative">
-            <h3 className="font-display text-2xl font-medium leading-tight">{it.title}</h3>
+            <h3 className="font-display text-2xl font-semibold leading-tight">{it.title}</h3>
             <p className="mt-2 text-sm text-white/75">{it.desc}</p>
             <span className="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-saffron">Find out more →</span>
           </div>
@@ -297,7 +297,7 @@ export function QuickLinksRow() {
 
 export function RegisterBanner() {
   return (
-    <Link href={cta.register.href} className="font-display block bg-brand py-8 text-center text-2xl font-medium text-white hover:brightness-110 md:text-4xl">
+    <Link href={cta.register.href} className="font-display block bg-brand py-8 text-center text-2xl font-semibold text-white hover:brightness-110 md:text-4xl">
       Register now for {event.edition} →
     </Link>
   );
@@ -323,7 +323,7 @@ export function CtaBand({ title, text, mode = "both" }: { title: string; text?: 
       <img src={photos.spread} alt="" className="photo absolute inset-0 h-full w-full opacity-25" loading="lazy" />
       <div className="container-x relative flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center">
         <div>
-          <h2 className="font-display text-3xl font-medium md:text-4xl">{title}</h2>
+          <h2 className="font-display text-3xl font-semibold md:text-4xl">{title}</h2>
           {text && <p className="mt-2 text-white/75">{text}</p>}
         </div>
         <div className="grid w-full grid-cols-1 gap-3 sm:flex sm:w-auto sm:flex-wrap">

@@ -29,7 +29,7 @@ export default function Home() {
           <div className="lg:col-span-7">
             <p className="eyebrow !text-saffron">International restaurant &amp; food-service trade expo</p>
             <img src="/images/logo-2027.webp" alt={event.fullName} className="mt-6 w-56 md:w-72" />
-            <h1 className="font-display mt-8 text-[2.6rem] font-medium leading-[1.02] sm:text-6xl md:text-7xl">
+            <h1 className="font-display mt-8 text-[2.4rem] font-semibold leading-[1.08] sm:text-5xl md:text-6xl">
               The future of food service is served in <em className="text-saffron">Bangkok.</em>
             </h1>
             <p className="mt-6 max-w-xl text-base text-white/75 md:text-lg">
@@ -136,12 +136,12 @@ export default function Home() {
       <section className="relative overflow-hidden bg-ink">
         <div className="grid grid-cols-3 md:grid-cols-6">
           {[photos.curry, photos.bowl, photos.steak, photos.fineDining, photos.prep, photos.produce].map((src, i) => (
-            <img key={src} src={src} alt="" className={`photo aspect-square h-full w-full ${i > 2 ? "hidden md:block" : ""}`} loading="lazy" />
+            <img key={src} src={src} alt="" className={`photo aspect-[3/4] h-full w-full md:aspect-[2/3] ${i > 2 ? "hidden md:block" : ""}`} loading="lazy" />
           ))}
         </div>
         <div className="absolute inset-0 flex items-center justify-center bg-ink/55 px-5 text-center">
           <div>
-            <p className="font-display text-5xl font-medium text-white md:text-8xl">Taste. Test. <em className="text-saffron">Trade.</em></p>
+            <p className="font-display text-5xl font-semibold text-white md:text-7xl">Taste. Test. <em className="text-saffron">Trade.</em></p>
             <p className="mx-auto mt-4 max-w-lg text-sm text-white/80 md:text-base">See equipment and systems working live, and meet the suppliers behind them.</p>
           </div>
         </div>
@@ -181,8 +181,8 @@ export default function Home() {
           <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {travelCards.map((c, i) => (
               <Link key={c.href} href={c.href} className="group flex flex-col justify-between rounded-2xl border border-line bg-paper p-7 transition hover:-translate-y-1 hover:border-brand hover:shadow-xl">
-                <span className="font-display text-3xl italic text-brand">{String(i + 1).padStart(2, "0")}</span>
-                <div className="mt-10">
+                <span className="font-display text-3xl text-brand">{String(i + 1).padStart(2, "0")}</span>
+                <div className="mt-6">
                   <h3 className="text-xl font-semibold group-hover:text-brand">{c.title}</h3>
                   <p className="mt-2 text-sm text-ink/65">{c.desc}</p>
                 </div>
@@ -207,7 +207,7 @@ export default function Home() {
           <ol className="divide-y divide-line border-y border-line">
             {whyExhibit.map((w, i) => (
               <li key={w.title} className="grid grid-cols-[3.5rem_1fr] gap-4 py-7">
-                <span className="font-display text-3xl italic text-brand">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-3xl text-brand">{String(i + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="text-xl font-semibold">{w.title}</h3>
                   <p className="mt-2 text-ink/65">{w.desc}</p>
@@ -235,7 +235,7 @@ export default function Home() {
               <Link key={c.title} href={c.href} className="group overflow-hidden rounded-2xl border border-line bg-white transition hover:-translate-y-1 hover:shadow-xl">
                 <img src={[photos.franchise, photos.produce, photos.meetup][i] ?? photos.spread} alt="" className="photo aspect-[16/10] w-full" loading="lazy" />
                 <div className="p-6">
-                  <h3 className="font-display text-2xl font-medium group-hover:text-brand">{c.title}</h3>
+                  <h3 className="font-display text-2xl font-semibold group-hover:text-brand">{c.title}</h3>
                   <p className="mt-2 text-sm text-ink/65">{c.desc}</p>
                 </div>
               </Link>
@@ -285,7 +285,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
         <div className="container-x relative flex flex-col items-center py-20 text-center md:py-28">
           <p className="eyebrow !text-saffron">{event.dateLabel} · {event.city}</p>
-          <h2 className="font-display mt-4 text-5xl font-medium md:text-7xl">Be part of <em className="text-saffron">{event.edition}</em></h2>
+          <h2 className="font-display mt-4 text-5xl font-semibold md:text-7xl">Be part of <em className="text-saffron">{event.edition}</em></h2>
           <p className="mt-5 max-w-xl text-white/75">{event.theme} — limited stands available in each zone.</p>
           <div className="mt-8"><Countdown date={event.startDate} /></div>
           <div className="mt-10"><TripleCta /></div>

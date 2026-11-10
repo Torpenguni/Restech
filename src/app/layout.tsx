@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Prompt } from "next/font/google";
+import { Prompt } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,7 +7,6 @@ import RegisterPopup from "@/components/RegisterPopup";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import { event } from "@/lib/site";
 
-const fraunces = Fraunces({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], variable: "--font-fraunces", display: "swap" });
 const prompt = Prompt({ subsets: ["latin", "thai"], weight: ["300", "400", "500", "600", "700"], variable: "--font-prompt", display: "swap" });
 
 export const viewport = { themeColor: "#0b0f24" };
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${prompt.variable} ${fraunces.variable}`}>
+    <html lang="en" className={prompt.variable}>
       <body>
         <Header />
         <main>{children}</main>
