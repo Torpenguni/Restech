@@ -56,9 +56,9 @@ export function ErrorNote({ message }: { message?: string }) {
 
 export function Success({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl bg-lime/30 p-8 text-center">
+    <div className="rounded-2xl bg-electric/10 p-8 text-center">
       <div className="text-4xl">✓</div>
-      <h3 className="mt-3 text-2xl font-black">{title}</h3>
+      <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
       <div className="mt-2 text-ink/70">{children}</div>
     </div>
   );

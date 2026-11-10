@@ -19,7 +19,7 @@ export default function WhyVisit() {
       <PageHero eyebrow="Visitor" title="Step into Asia's Restaurant Technology Marketplace" intro={`${event.dateLabel} · ${event.venue}`}>
         <Link href="/join-mailing-list" className="btn-ghost uppercase">Register Your Interest</Link>
         <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>
-        <Link href={cta.exhibitorList.href} className="btn-lime uppercase">View Exhibitor List</Link>
+        <Link href={cta.exhibitorList.href} className="btn-blue uppercase">View Exhibitor List</Link>
       </PageHero>
       <section className="py-16">
         <div className="container-x">
@@ -45,7 +45,7 @@ export default function WhyVisit() {
           <ol className="grid gap-4 md:grid-cols-5">
             {tips.map((t, i) => (
               <li key={t.title} className="rounded-2xl border border-ink/10 p-5 text-sm">
-                <span className="text-2xl font-black text-brand">{i + 1}</span>
+                <span className="text-2xl font-semibold text-brand">{i + 1}</span>
                 <h3 className="mt-2 font-bold">{t.title}</h3>
                 <p className="mt-1 text-ink/70">{t.desc}</p>
               </li>

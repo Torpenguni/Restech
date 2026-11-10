@@ -4,32 +4,34 @@ import NewsletterForm from "./forms/NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="bg-hero text-white">
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Follow Us */}
         <div>
-          <p className="text-2xl font-black">RES<span className="text-brand">TECH</span></p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.webp" alt="Restech 2026" className="h-16 w-auto" />
+          <p className="mt-3 text-xs text-white/60">Organised by {event.organiser}</p>
           <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-widest text-white/50">Follow Us</p>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
             {social.map((s) => (
-              <li key={s.label}><a href={s.href} className="hover:text-lime">{s.label}</a></li>
+              <li key={s.label}><a href={s.href} className="hover:text-brand">{s.label}</a></li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-lime">{event.hashtags.join(" ")}</p>
+          <p className="mt-4 text-sm text-brand">{event.hashtags.join(" ")}</p>
         </div>
         {/* Quick Links */}
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">Quick Links</p>
           <ul className="space-y-2 text-sm">
             {quickLinks.map((l) => (
-              <li key={l.href}><Link href={l.href} className="hover:text-lime">{l.label}</Link></li>
+              <li key={l.href}><Link href={l.href} className="hover:text-brand">{l.label}</Link></li>
             ))}
           </ul>
         </div>
         {/* Register Now */}
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">{event.edition}</p>
-          <p className="text-sm text-white/70">{event.dateLabel}<br />{event.venue}</p>
+          <p className="text-sm text-white/70">{event.dateLabel} · {event.hours}<br />{event.venue}</p>
           <Link href={cta.register.href} className="btn-primary mt-5 uppercase">{cta.register.label}</Link>
         </div>
         {/* Newsletter */}
@@ -41,7 +43,7 @@ export default function Footer() {
       </div>
       {/* Held In / Endorsed By / Supported By / certification */}
       <div className="border-t border-white/10">
-        <div className="container-x grid grid-cols-2 gap-6 py-8 md:grid-cols-4">
+        <div className="container-x grid gap-6 py-8 md:grid-cols-3">
           {credibility.map((c) => (
             <div key={c.label}>
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">{c.label}</p>
@@ -52,7 +54,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/50 md:flex-row">
-          <span>© {new Date().getFullYear()} Restech. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {event.organiser} All rights reserved.</span>
           <span className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/sitemap" className="hover:text-white">Site Map</Link>

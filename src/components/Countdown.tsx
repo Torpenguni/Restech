@@ -21,11 +21,13 @@ export default function Countdown({ date }: { date: string }) {
     return () => clearInterval(id);
   }, [target]);
 
+  if (t && Date.now() > target)
+    return <p className="rounded-xl bg-white/10 px-5 py-3 text-sm font-medium">This edition has ended — see you at the next Restech!</p>;
   return (
     <div className="flex gap-3">
       {Object.entries(t ?? { Days: 0, Hours: 0, Minutes: 0, Seconds: 0 }).map(([k, v]) => (
         <div key={k} className="min-w-16 rounded-xl bg-white/10 px-3 py-2 text-center backdrop-blur">
-          <div className="text-2xl font-extrabold tabular-nums">{t ? String(v).padStart(2, "0") : "--"}</div>
+          <div className="text-2xl font-semibold tabular-nums">{t ? String(v).padStart(2, "0") : "--"}</div>
           <div className="text-[10px] uppercase tracking-widest text-white/60">{k}</div>
         </div>
       ))}

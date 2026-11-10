@@ -27,11 +27,11 @@ export default function ExhibitWithUs() {
       <section className="bg-ink py-16 text-white">
         <div className="container-x flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <p className="eyebrow !text-lime">Sponsorship</p>
+            <p className="eyebrow !text-brand">Sponsorship</p>
             <h2 className="h2 mt-2">Want more than a stand?</h2>
             <p className="mt-2 text-white/70">Stage, registration, lanyard, networking and digital packages.</p>
           </div>
-          <Link href={cta.sponsor.href} className="btn-lime uppercase">Let&apos;s talk sponsorship</Link>
+          <Link href={cta.sponsor.href} className="btn-blue uppercase">Let&apos;s talk sponsorship</Link>
         </div>
       </section>
       <section className="py-20">
@@ -40,7 +40,7 @@ export default function ExhibitWithUs() {
           <ol className="grid gap-5 md:grid-cols-4">
             {steps.map((s, i) => (
               <li key={s.title} className="rounded-2xl border border-ink/10 p-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-black text-white">{i + 1}</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-semibold text-white">{i + 1}</span>
                 <h3 className="mt-4 font-bold">{s.title}</h3>
                 <p className="mt-1 text-sm text-ink/70">{s.desc}</p>
               </li>

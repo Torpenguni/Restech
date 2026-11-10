@@ -12,6 +12,7 @@ import {
   SocialStrip,
   SpotlightCards,
   SponsorTiers,
+  SupportedBy,
   StatsBar,
   Testimonials,
   TripleCta,
@@ -22,17 +23,15 @@ import { cta, event, newAt, whatsNew, whyExhibit } from "@/lib/site";
 export default function Home() {
   return (
     <>
-      {/* 1. Hero banner — tagline, dates, venue, 3 CTAs */}
-      <section className="relative overflow-hidden bg-ink text-white">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-brand/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-lime/10 blur-3xl" />
-        <div className="container-x relative py-24 md:py-32">
-          <p className="eyebrow !text-lime">{event.tagline}</p>
-          <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[1.05] tracking-tight md:text-7xl">
-            {event.dateLabel}
-            <span className="block text-brand">{event.venue}</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/70">Where restaurant operators meet the technology that grows margin and scales their business.</p>
+      {/* 1. Hero banner — key visual, dates, venue, 3 CTAs */}
+      <section className="bg-hero relative overflow-hidden text-white">
+        <div className="container-x relative flex flex-col items-center py-20 text-center md:py-28">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.webp" alt={event.fullName} className="w-full max-w-xl" />
+          <p className="mt-6 text-lg md:text-xl">
+            {event.dateLabel} <span className="text-brand">|</span> {event.venue}
+          </p>
+          <p className="mt-2 text-sm uppercase tracking-[0.3em] text-white/60">{event.theme}</p>
           <div className="mt-10"><TripleCta /></div>
         </div>
       </section>
@@ -47,14 +46,24 @@ export default function Home() {
       <section className="py-20">
         <div className="container-x">
           <div className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {["Owners & C-level", "Operations heads", "IT & digital", "Finance & procurement"].map((t, i) => (
-              <div key={t} className={`flex aspect-[4/3] items-end rounded-2xl p-5 font-bold text-white ${["bg-navy", "bg-brand", "bg-ink", "bg-navy"][i]}`}>{t}</div>
+            {[
+              { t: "Restaurant & café owners", img: "/images/atmosphere-2024.webp" },
+              { t: "Restaurant chains & hotels", img: "/images/visitor.webp" },
+              { t: "Technology & innovation enthusiasts", img: "/images/exhibitor.webp" },
+              { t: "Business matching", img: "/images/business-matching.webp" },
+            ].map(({ t, img }) => (
+              <div key={t} className="relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl bg-navy p-5 text-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                <span className="relative font-medium">{t}</span>
+              </div>
             ))}
           </div>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="h2">Your Customers Are at {event.edition}</h2>
             <p className="mt-4 text-ink/70">
-              Restaurant owners, chain operators, franchise groups and hotel F&amp;B leaders come to Restech with one goal: to find technology that fixes margin, labour and growth.
+              More than 10,000 restaurant owners, chain and hotel operators and technology enthusiasts come to Restech to find the equipment, systems and partners that move their business forward.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link href={cta.bookStand.href} className="btn-primary uppercase">I want to exhibit!</Link>
@@ -67,7 +76,7 @@ export default function Home() {
       {/* 5. Key Segments — two groups */}
       <section className="bg-mist py-20">
         <div className="container-x">
-          <SectionHead center title="Key Segments" intro="Twelve segments across front of house and back of house." />
+          <SectionHead center title="Key Segments" intro="Restaurant technology and restaurant operations — every zone of the show." />
           <SegmentGrid />
         </div>
       </section>
@@ -83,8 +92,9 @@ export default function Home() {
       {/* 7. Show floor / floor plan */}
       <section className="bg-mist py-20">
         <div className="container-x">
-          <SectionHead center title="A Show Floor Built for 2027" intro="Zones follow the restaurant journey — order, kitchen, delivery, guest and back office." />
-          <div className="flex aspect-[21/9] items-center justify-center rounded-3xl border-2 border-dashed border-ink/15 bg-white text-sm text-ink/40">Floor plan image (TBC)</div>
+          <SectionHead center title="IMPACT Hall 5–6 Floor Plan" intro="Draft floor plan — book early to secure the best locations." />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/floor-plan.webp" alt="Restech 2026 floor plan, IMPACT Hall 5–6" className="w-full rounded-3xl shadow-lg" loading="lazy" />
         </div>
       </section>
 
@@ -115,7 +125,8 @@ export default function Home() {
       {/* 11. Sponsors by tier */}
       <section className="py-20">
         <div className="container-x">
-          <SectionHead center title="Thank You To Our Sponsors" />
+          <SupportedBy />
+          <SectionHead center title="Our Partners & Sponsors" />
           <SponsorTiers />
         </div>
       </section>
@@ -124,10 +135,10 @@ export default function Home() {
       <CountdownBanner />
 
       {/* 13. Be Part of ... — 3 CTAs */}
-      <section className="bg-gradient-to-br from-ink via-navy to-ink py-20 text-white">
+      <section className="bg-hero py-20 text-white">
         <div className="container-x flex flex-col items-center text-center">
-          <h2 className="text-4xl font-black md:text-5xl">Be Part of the <span className="text-brand">First Restech</span></h2>
-          <p className="mt-4 max-w-xl text-white/70">Limited stands available in each segment.</p>
+          <h2 className="text-4xl font-semibold md:text-5xl">Be Part of <span className="text-brand">Restech 2026</span></h2>
+          <p className="mt-4 max-w-xl text-white/70">Step Into The Future — limited stands available in each zone.</p>
           <div className="mt-8"><TripleCta /></div>
         </div>
       </section>
@@ -143,7 +154,7 @@ export default function Home() {
       {/* 15. Event Highlights photo grid */}
       <section className="bg-mist py-20">
         <div className="container-x">
-          <SectionHead center title="Event Highlights" />
+          <SectionHead center title="Restech 2024 Highlights" />
           <PhotoGrid />
           <div className="mt-8 text-center"><Link href="/media-gallery" className="btn-outline uppercase">View Snapshots</Link></div>
         </div>

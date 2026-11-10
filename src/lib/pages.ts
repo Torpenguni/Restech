@@ -21,10 +21,11 @@ const p = (eyebrow: string, title: string, intro: string, sections: InfoPage["se
 
 export const infoPages: Record<string, InfoPage> = {
   // The Event — Overview
-  "about-restech": p("The Event", "About Restech", "Restech is the dedicated meeting place for restaurant technology and the operators who buy it.", [
-    { heading: "Our mission", body: "Help restaurant businesses grow margin and scale through technology by connecting them with the right solutions and peers." },
-    { heading: "Who we bring together", body: "Technology suppliers, multi-branch operators, franchise groups, hotel F&B leaders, investors and industry associations." },
-    { heading: "Organiser", body: "TODO: organiser profile and credentials." },
+  "about-restech": p("The Event", "About Restech", "Restech – Restaurant Technology Expo 2026: Step Into The Future. A technology and management exhibition for restaurant businesses.", [
+    { heading: "Date & venue", body: "27–29 August 2026, 09:30–19:00, IMPACT Muang Thong Thani, Exhibition Hall 5–6." },
+    { heading: "Who exhibits", body: "Restaurant technology · Kitchen equipment · IT marketing technology · Services and suppliers for restaurants · Finance and financial technology · Franchise businesses." },
+    { heading: "Who visits", body: "More than 10,000 visitors: restaurant and café owners, restaurant chains and hotel businesses, technology and innovation enthusiasts, and general attendees." },
+    { heading: "Organiser", body: "Penguin X Co., Ltd. — 8/299, 8/300 Room 205, L1 (Tops side), The Lighthouse Building, Charoen Nakhon Rd, Khlong Ton Sai, Khlong San, Bangkok 10600." },
   ], { cta: "both" }),
   "safe-events": p("The Event", "Safe Events", "Our commitment to a safe and secure show for every participant.", [
     { heading: "Health & safety", body: "TODO: venue safety, first aid and emergency procedures." },
@@ -50,62 +51,46 @@ export const infoPages: Record<string, InfoPage> = {
   ]),
 
   // Event Highlights — Spotlight
-  "tech-demo-kitchen": p("Spotlight", "Tech Demo Kitchen", "A working restaurant on the show floor powered end-to-end by exhibitor technology.", [
-    { heading: "What you'll see", body: "Order capture, kitchen display, robotics, delivery hand-off and live dashboards — integrated." },
-    { heading: "Join as a technology partner", body: "Limited integration slots are available for exhibitors." },
+  "restaurant-of-the-future": p("Spotlight", "Restaurant of the Future", "Future restaurant concepts that show where the industry is heading.", [
+    { heading: "What you'll see", body: "Launch of future restaurant concepts integrating the latest kitchen equipment, management technology and customer experience." },
   ], { cta: "both" }),
-  "robotics-automation": p("Spotlight", "Robotics & Automation", "Cooking robots, automated beverage stations and service robots in action.", [
-    { heading: "Why it matters", body: "Automation addresses labour shortages and consistency across branches." },
+  "business-matching": p("Spotlight", "Business Matching", "Pre-arranged meetings between restaurant owners and the right suppliers.", [
+    { heading: "How it works", body: "Register as a visitor, tell us what you are looking for, and we match you with relevant exhibitors before the show." },
   ], { cta: "both" }),
-  "delivery-cloud-kitchen": p("Spotlight", "Delivery & Cloud Kitchen", "Solutions for delivery-first brands and virtual kitchens.", [
-    { heading: "Focus", body: "Aggregator integration, own-channel ordering, packaging and kitchen layout for delivery." },
+  "franchise-zone": p("Spotlight", "Franchise Zone", "Franchise brands and expansion opportunities for investors and operators.", [
+    { heading: "Who should visit", body: "Investors and entrepreneurs looking for a restaurant franchise, and brands looking for franchisees." },
   ], { cta: "both" }),
-  "franchise-chain-zone": p("Spotlight", "Franchise & Chain Zone", "Tools and services for brands scaling to multiple branches and franchising.", [
-    { heading: "Focus", body: "Franchise management, central kitchen, multi-branch reporting and expansion services." },
+  "event-highlight": p("Spotlight", "Restech 2026 Event Highlight", "Returning with the biggest event for restaurant owners — Restech – Restaurant Technology Expo 2026: Step Into The Future.", [
+    { heading: "Key milestones", body: "Launch of Future Restaurant Concepts · Spotlight on Industry Leaders · Introduction of Innovative Technologies · Business Matching Opportunities · Focus on Sustainability · Community Engagement Activities." },
   ], { cta: "both" }),
-  "hotel-fnb-tech": p("Spotlight", "Hotel F&B Tech", "Technology for hotel restaurants, banqueting and in-room dining.", [
-    { heading: "Focus", body: "PMS–POS integration, banquet management, in-room ordering and F&B analytics." },
-  ], { cta: "both" }),
-  "startup-alley": p("Spotlight", "Startup Alley", "A dedicated zone for early-stage restaurant tech companies.", [
-    { heading: "Turnkey booths", body: "Compact, ready-built booths priced for startups." },
-    { heading: "Pitch on stage", body: "Selected startups compete in the Startup Pitch Challenge." },
-  ], { cta: "exhibit" }),
 
   // Event Highlights — Conferences
-  conferences: p("Event Highlights", "Conferences", "Operator-led sessions on margin, data, automation and AI.", [], {
+  conferences: p("Event Highlights", "Conferences", "Two stages of sessions on restaurant technology, marketing and management.", [], {
     children: [
-      { title: "Restech Main Stage", desc: "Keynotes and panels from leaders of the region's biggest restaurant groups.", href: "/restech-main-stage" },
-      { title: "Restech Webinar", desc: "Pre-show online sessions on restaurant technology trends.", href: "/webinar" },
-      { title: "Future of Restaurants Conference", desc: "A deep-dive programme on the next decade of restaurant operations.", href: "/future-of-restaurants-conference" },
-      { title: "Sustainability Summit", desc: "Cutting food waste and energy cost with technology.", href: "/sustainability-summit" },
+      { title: "Main Stage Sessions", desc: "Keynotes and panels from restaurant industry leaders.", href: "/main-stage" },
+      { title: "Talk Stage Sessions", desc: "Practical talks on technology, marketing and management.", href: "/talk-stage" },
     ],
     cta: "register",
   }),
-  "restech-main-stage": p("Conferences", "Restech Main Stage", "Keynotes and panels from leaders of the region's biggest restaurant groups.", [
-    { heading: "Speakers", body: "Speaker line-up to be announced." },
+  "main-stage": p("Conferences", "Main Stage Sessions", "Keynotes and panels from restaurant industry leaders.", [
+    { heading: "Programme", body: "TODO: main stage agenda and speakers." },
   ], { cta: "register" }),
-  webinar: p("Conferences", "Restech Webinar", "Pre-show online sessions on restaurant technology trends.", [
-    { heading: "Upcoming sessions", body: "Join the mailing list to be notified when registration opens." },
+  "talk-stage": p("Conferences", "Talk Stage Sessions", "Practical talks on technology, marketing and management.", [
+    { heading: "Programme", body: "TODO: talk stage agenda and speakers." },
   ], { cta: "register" }),
-  "future-of-restaurants-conference": p("Conferences", "Future of Restaurants Conference", "A deep-dive programme on the next decade of restaurant operations.", [
-    { heading: "Tracks", body: "Unit economics · Digital ordering · Kitchen automation · Data & AI · People & productivity." },
-  ], { cta: "register" }),
-  "sustainability-summit": p("Conferences", "Sustainability Summit", "Cutting food waste and energy cost with technology.", [
-    { heading: "Programme", body: "TODO: summit agenda." },
-  ], { cta: "register" }),
-  "be-a-speaker": p("Event Highlights", "Be a Speaker", "Share your case study with the region's restaurant operators.", [
-    { heading: "Call for speakers", body: "We prioritise operator case studies with real numbers. Contact us with your proposed topic." },
+  "be-a-speaker": p("Event Highlights", "Be a Speaker", "Share your experience with thousands of restaurant owners.", [
+    { heading: "Call for speakers", body: "We prioritise practical case studies from operators and technology providers. Email info@penguinx.co with your proposed topic." },
   ]),
 
-  // Event Highlights — Competitions
-  competitions: p("Event Highlights", "Competitions", "Recognising the best ideas and implementations in restaurant technology.", [], {
+  // Event Highlights — Competitions (FHA structure slot — TODO: confirm whether Restech will run these)
+  competitions: p("Event Highlights", "Competitions", "Recognising the best ideas in restaurant technology.", [], {
     children: [
-      { title: "Restech Startup Pitch Challenge", desc: "Startups pitch live to investors and restaurant groups.", href: "/startup-pitch-challenge" },
+      { title: "Restech Startup Pitch", desc: "Restaurant tech startups pitch to investors and restaurant groups.", href: "/startup-pitch" },
       { title: "Restech Innovation Awards", desc: "Awards for operators and suppliers creating measurable impact.", href: "/innovation-awards" },
     ],
   }),
-  "startup-pitch-challenge": p("Competitions", "Restech Startup Pitch Challenge", "Restaurant tech startups compete for investment, pilots and prizes.", [
-    { heading: "How to apply", body: "Applications open soon. Startup Alley exhibitors receive priority." },
+  "startup-pitch": p("Competitions", "Restech Startup Pitch", "Restaurant tech startups pitch to investors and restaurant groups.", [
+    { heading: "How to apply", body: "TODO: application details." },
   ], { cta: "exhibit" }),
   "innovation-awards": p("Competitions", "Restech Innovation Awards", "Recognising operators and suppliers creating measurable impact with technology.", [
     { heading: "Categories", body: "TODO: award categories and judging criteria." },
@@ -163,7 +148,7 @@ export const infoPages: Record<string, InfoPage> = {
   ]),
 
   // Legal
-  "privacy-policy": p("Legal", "Privacy Policy", "How we collect and use personal data in line with Thailand's PDPA.", [
+  "privacy-policy": p("Legal", "Privacy Policy", "How Penguin X Co., Ltd. collects and uses personal data in line with Thailand's PDPA.", [
     { heading: "Data we collect", body: "Registration and enquiry details you submit through our forms." },
     { heading: "How we use it", body: "To process your registration or enquiry and, only with your consent, to send event updates." },
     { heading: "Your rights", body: "You may request access, correction or deletion of your data at any time. TODO: legal review." },

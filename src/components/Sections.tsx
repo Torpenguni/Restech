@@ -29,10 +29,10 @@ export function Breadcrumb({ items }: { items: { label: string; href?: string }[
 
 export function PageHero({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children?: React.ReactNode }) {
   return (
-    <section className="bg-gradient-to-br from-ink via-navy to-ink text-white">
+    <section className="bg-hero text-white">
       <div className="container-x py-14 md:py-20">
         <Breadcrumb items={[{ label: eyebrow }, { label: title }]} />
-        <h1 className="max-w-3xl text-4xl font-black tracking-tight md:text-5xl">{title}</h1>
+        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1>
         {intro && <p className="mt-4 max-w-2xl text-lg text-white/70">{intro}</p>}
         {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
       </div>
@@ -45,7 +45,7 @@ export function TripleCta({ dark = true }: { dark?: boolean }) {
   return (
     <div className="flex flex-wrap gap-3">
       <Link href={cta.exhibit.href} className="btn-primary uppercase">{cta.exhibit.label}</Link>
-      <Link href={cta.register.href} className="btn-lime uppercase">{cta.register.label}</Link>
+      <Link href={cta.register.href} className="btn-blue uppercase">{cta.register.label}</Link>
       <Link href={cta.brochure.href} className={`${dark ? "btn-ghost" : "btn-outline"} uppercase`}>{cta.brochure.label}</Link>
     </div>
   );
@@ -58,7 +58,7 @@ export function CountdownBanner() {
       <div className="container-x flex flex-col items-center justify-between gap-6 py-10 md:flex-row">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">{event.dateLabel} · {event.venue}</p>
-          <p className="mt-2 text-3xl font-black md:text-4xl">The countdown to {event.edition} has begun</p>
+          <p className="mt-2 text-3xl font-semibold md:text-4xl">The countdown to {event.edition} has begun</p>
         </div>
         <div className="flex flex-col items-center gap-3">
           <Countdown date={event.startDate} />
@@ -71,18 +71,18 @@ export function CountdownBanner() {
 
 export function StatsBar({ title = `${event.edition} by the Numbers` }: { title?: string }) {
   return (
-    <section className="bg-navy py-14 text-white">
+    <section className="bg-electric py-14 text-white">
       <div className="container-x">
-        <h2 className="mb-8 text-center text-2xl font-black md:text-3xl">{title}</h2>
+        <h2 className="mb-8 text-center text-2xl font-semibold md:text-3xl">{title}</h2>
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-4xl font-black text-lime md:text-5xl">{s.value}</div>
+              <div className="text-4xl font-semibold md:text-5xl">{s.value}</div>
               <div className="mt-1 text-sm font-medium text-white/80">{s.label}</div>
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-[11px] text-white/50">*Projected Stats</p>
+        <p className="mt-6 text-center text-[11px] text-white/60">*Projected figures</p>
       </div>
     </section>
   );
@@ -94,7 +94,7 @@ export function CardGrid({ items, numbered = true }: { items: { title: string; d
       {items.map((it, i) => {
         const inner = (
           <>
-            {numbered && <span className="text-sm font-black text-brand">{String(i + 1).padStart(2, "0")}</span>}
+            {numbered && <span className="text-sm font-semibold text-brand">{String(i + 1).padStart(2, "0")}</span>}
             <h3 className="mt-2 text-lg font-bold">{it.title}</h3>
             <p className="mt-2 text-sm text-ink/70">{it.desc}</p>
             {it.href && <span className="mt-4 inline-block text-sm font-bold uppercase text-brand">Find out more →</span>}
@@ -111,12 +111,17 @@ export function CardGrid({ items, numbered = true }: { items: { title: string; d
 }
 
 /** Spotlight cards with image placeholder (FHA "What's New" / "New at"). */
-export function SpotlightCards({ items }: { items: { title: string; desc: string; href: string }[] }) {
+export function SpotlightCards({ items }: { items: { title: string; desc: string; href: string; image?: string }[] }) {
   return (
-    <div className={`grid gap-5 sm:grid-cols-2 ${items.length > 3 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
+    <div className={`grid gap-5 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : items.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
       {items.map((it) => (
         <Link key={it.title} href={it.href} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink/5 transition hover:-translate-y-1 hover:shadow-lg">
-          <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-navy to-ink text-xs text-white/40">Image</div>
+          {it.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={it.image} alt="" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+          ) : (
+            <div className="bg-hero flex aspect-[4/3] items-center justify-center text-sm text-white/70">{it.title}</div>
+          )}
           <div className="p-5">
             <h3 className="font-bold group-hover:text-brand">{it.title}</h3>
             <p className="mt-2 text-sm text-ink/70">{it.desc}</p>
@@ -133,7 +138,7 @@ export function SegmentGrid() {
     <div className="space-y-10">
       {segmentGroups.map((g) => (
         <div key={g.key}>
-          <h3 className="mb-4 text-lg font-black uppercase tracking-wide text-brand">{g.title}</h3>
+          <h3 className="mb-4 text-lg font-semibold uppercase tracking-wide text-brand">{g.title}</h3>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {g.items.map((s) => (
               <Link key={s.slug} href={`/segments/${s.slug}`} className="group flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-sm ring-1 ring-ink/5 transition hover:ring-brand">
@@ -166,7 +171,7 @@ export function Testimonials() {
     <div className="grid gap-5 md:grid-cols-3">
       {testimonials.map((t, i) => (
         <figure key={i} className="rounded-2xl bg-navy p-6 text-white">
-          <p className="text-xs font-bold uppercase tracking-widest text-lime">{t.type}</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-brand">{t.type}</p>
           <div className="my-4 flex aspect-video items-center justify-center rounded-xl bg-white/5 text-xs text-white/40">▶ Video</div>
           <blockquote className="text-sm leading-relaxed text-white/85">“{t.quote}”</blockquote>
           <figcaption className="mt-4 text-sm">
@@ -175,6 +180,16 @@ export function Testimonials() {
           </figcaption>
         </figure>
       ))}
+    </div>
+  );
+}
+
+export function SupportedBy() {
+  return (
+    <div className="mb-14 text-center">
+      <p className="mb-6 text-xl font-medium text-electric">Official Supported by</p>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/images/supported-by.png" alt="Official supporters of Restech 2026" className="mx-auto w-full max-w-3xl" loading="lazy" />
     </div>
   );
 }
@@ -201,10 +216,9 @@ export function SponsorTiers() {
 export function PhotoGrid() {
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-      {Array.from({ length: 8 }).map((_, i) => (
-        <div key={i} className={`flex items-center justify-center rounded-xl bg-ink/5 text-xs text-ink/40 ${i === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`}>
-          Photo
-        </div>
+      {["atmosphere-2024", "future-restaurant", "main-stage", "talk-stage", "business-matching", "visitor", "exhibitor", "kv-about"].map((name, i) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img key={name} src={`/images/${name}.webp`} alt="" loading="lazy" className={`h-full w-full rounded-xl object-cover ${i === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`} />
       ))}
     </div>
   );
@@ -243,7 +257,7 @@ export function QuickLinksRow() {
 
 export function RegisterBanner() {
   return (
-    <Link href={cta.register.href} className="block bg-lime py-8 text-center text-2xl font-black uppercase tracking-wide text-ink hover:brightness-95 md:text-3xl">
+    <Link href={cta.register.href} className="block bg-electric py-8 text-center text-2xl font-semibold uppercase tracking-wide text-white hover:brightness-110 md:text-3xl">
       Register Now for {event.edition} →
     </Link>
   );
@@ -253,7 +267,7 @@ export function NewsletterBlock() {
   return (
     <section className="bg-navy py-14 text-white">
       <div className="container-x flex flex-col items-center gap-6 text-center">
-        <h2 className="text-2xl font-black md:text-3xl">Join Our Newsletter</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">Join Our Newsletter</h2>
         <p className="max-w-xl text-white/70">Be first to hear about exhibitors, speakers and early-bird offers.</p>
         <div className="w-full max-w-md"><NewsletterForm /></div>
       </div>
@@ -263,16 +277,16 @@ export function NewsletterBlock() {
 
 export function CtaBand({ title, text, mode = "both" }: { title: string; text?: string; mode?: "register" | "exhibit" | "both" }) {
   return (
-    <section className="bg-lime">
+    <section className="bg-electric text-white">
       <div className="container-x flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
         <div>
-          <h2 className="text-2xl font-black md:text-3xl">{title}</h2>
-          {text && <p className="mt-2 text-ink/70">{text}</p>}
+          <h2 className="text-2xl font-semibold md:text-3xl">{title}</h2>
+          {text && <p className="mt-2 text-white/80">{text}</p>}
         </div>
         <div className="flex flex-wrap gap-3">
-          {mode !== "register" && <Link href={cta.bookStand.href} className="btn bg-ink uppercase text-white hover:bg-navy">{cta.bookStand.label}</Link>}
+          {mode !== "register" && <Link href={cta.bookStand.href} className="btn bg-white uppercase text-electric hover:bg-white/90">{cta.bookStand.label}</Link>}
           {mode !== "exhibit" && <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>}
-          <Link href={cta.brochure.href} className="btn-outline uppercase">{cta.brochure.label}</Link>
+          <Link href={cta.brochure.href} className="btn-ghost uppercase">{cta.brochure.label}</Link>
         </div>
       </div>
     </section>
