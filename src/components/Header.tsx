@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { cta, nav } from "@/lib/site";
+import { cta, event, nav } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState<number | null>(null);
@@ -13,7 +13,24 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-ink text-white shadow-lg">
+    <header className="sticky top-0 z-50 bg-ink/95 text-white shadow-lg backdrop-blur">
+      {/* Utility bar — international context: date, city, trade-only, travel help, language */}
+      <div className="hidden border-b border-white/10 text-[11px] font-medium uppercase tracking-[0.18em] text-white/60 md:block">
+        <div className="container-x flex h-9 items-center justify-between">
+          <p>
+            <span className="text-saffron">●</span>&nbsp; {event.dateLabel} &nbsp;·&nbsp; {event.city}, Thailand &nbsp;·&nbsp; International trade event
+          </p>
+          <div className="flex items-center gap-5">
+            <Link href="/plan-your-visit" className="hover:text-white">Plan your trip</Link>
+            <Link href="/visa-support" className="hover:text-white">Visa support</Link>
+            <span className="flex items-center gap-2">
+              <span className="text-white">EN</span>
+              <span className="text-white/30">|</span>
+              <Link href="/th" className="hover:text-white">ไทย</Link>
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="container-x flex h-16 items-center md:h-20 justify-between gap-6" onMouseLeave={() => setOpen(null)}>
         <Link href="/" className="shrink-0" onClick={close}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -25,14 +42,14 @@ export default function Header() {
           {nav.map((item, i) => (
             <div key={item.label} className="h-full" onMouseEnter={() => setOpen(i)}>
               <button
-                className={`flex h-full items-center px-3 text-sm font-bold uppercase tracking-wide ${open === i ? "text-brand" : ""}`}
+                className={`flex h-full items-center px-3 text-[13px] font-semibold uppercase tracking-[0.12em] transition ${open === i ? "text-saffron" : "text-white/85 hover:text-white"}`}
                 aria-expanded={open === i}
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 {item.label} <span className="ml-1 text-[10px]">▾</span>
               </button>
               {open === i && (
-                <div className="absolute inset-x-0 top-full border-t-4 border-brand bg-white text-ink shadow-2xl">
+                <div className="absolute inset-x-0 top-full border-t-2 border-brand bg-paper text-ink shadow-2xl">
                   <div className="container-x grid grid-cols-4 gap-8 py-8">
                     {item.groups.map((g) => (
                       <div key={g.title}>
@@ -71,8 +88,7 @@ export default function Header() {
         {/* Utility buttons: Register Now · Be an Exhibitor · language */}
         <div className="hidden items-center gap-2 xl:flex">
           <Link href={cta.register.href} className="btn-primary !px-5 !py-2.5 uppercase">{cta.register.label}</Link>
-          <Link href={cta.exhibit.href} className="btn-blue !px-5 !py-2.5 uppercase">{cta.exhibit.label}</Link>
-          <Link href="/th" className="px-2 text-sm font-bold hover:text-brand">ไทย</Link>
+          <Link href={cta.exhibit.href} className="btn-ghost !px-5 !py-2.5 uppercase">{cta.exhibit.label}</Link>
         </div>
 
         <button className="-mr-2 p-2 xl:hidden" aria-label="Menu" aria-expanded={mobile} onClick={() => setMobile(!mobile)}>
@@ -88,7 +104,7 @@ export default function Header() {
                 <summary className="cursor-pointer py-1 font-bold uppercase">{item.label}</summary>
                 {item.groups.map((g) => (
                   <div key={g.title} className="mt-3 pl-3">
-                    <p className="text-xs font-bold uppercase tracking-widest text-brand">{g.title}</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-saffron">{g.title}</p>
                     {g.links.map((l) => (
                       <Link key={l.href + l.label} href={l.href} onClick={close} className="block py-2.5 text-[15px]">
                         {l.label}
@@ -100,7 +116,7 @@ export default function Header() {
             ))}
             <div className="grid grid-cols-2 gap-3 pt-3">
               <Link href={cta.register.href} onClick={close} className="btn-primary">{cta.register.label}</Link>
-              <Link href={cta.exhibit.href} onClick={close} className="btn-blue">{cta.exhibit.label}</Link>
+              <Link href={cta.exhibit.href} onClick={close} className="btn-ghost">{cta.exhibit.label}</Link>
             </div>
             <Link href="/th" onClick={close} className="block pt-2 text-center text-sm">ไทย</Link>
           </div>

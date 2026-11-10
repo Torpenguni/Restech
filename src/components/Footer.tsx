@@ -4,7 +4,17 @@ import NewsletterForm from "./forms/NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="bg-hero pb-20 text-white md:pb-0">
+    <footer className="bg-ink pb-20 text-white md:pb-0">
+      <div className="container-x border-b border-white/10 py-14 md:py-20">
+        <p className="eyebrow">{event.dateLabel} · {event.city}, Thailand</p>
+        <p className="font-display mt-4 max-w-4xl text-4xl font-medium leading-[1.05] md:text-6xl">
+          See you in Bangkok — <em className="text-saffron">where the future of food service is served.</em>
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>
+          <Link href={cta.bookStand.href} className="btn-ghost uppercase">{cta.bookStand.label}</Link>
+        </div>
+      </div>
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Follow Us */}
         <div>
@@ -14,17 +24,17 @@ export default function Footer() {
           <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-widest text-white/50">Follow Us</p>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
             {social.map((s) => (
-              <li key={s.label}><a href={s.href} className="inline-block py-1.5 hover:text-brand">{s.label}</a></li>
+              <li key={s.label}><a href={s.href} className="inline-block py-1.5 hover:text-saffron">{s.label}</a></li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-brand">{event.hashtags.join(" ")}</p>
+          <p className="mt-4 text-sm text-saffron">{event.hashtags.join(" ")}</p>
         </div>
         {/* Quick Links */}
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">Quick Links</p>
           <ul className="space-y-0.5 text-sm">
             {quickLinks.map((l) => (
-              <li key={l.href}><Link href={l.href} className="inline-block py-1.5 hover:text-brand">{l.label}</Link></li>
+              <li key={l.href}><Link href={l.href} className="inline-block py-1.5 hover:text-saffron">{l.label}</Link></li>
             ))}
           </ul>
         </div>
@@ -32,7 +42,7 @@ export default function Footer() {
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">{event.edition}</p>
           <p className="text-sm text-white/70">{event.dateLabel} · {event.hours}<br />{event.venue}</p>
-          <Link href={cta.register.href} className="btn-primary mt-5 uppercase">{cta.register.label}</Link>
+          <Link href="/plan-your-visit" className="mt-4 inline-block text-sm font-semibold text-saffron hover:underline">Plan your trip →</Link>
         </div>
         {/* Newsletter */}
         <div>
