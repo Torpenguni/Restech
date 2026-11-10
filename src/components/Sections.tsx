@@ -172,7 +172,7 @@ export function SegmentGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent" />
                 <div className="relative">
                   <h4 className="text-base font-semibold leading-snug md:text-lg">{s.name}</h4>
-                  <p className="mt-1 hidden text-sm text-white/70 md:block">{s.desc}</p>
+                  <p className="mt-1 text-xs text-white/75 md:text-sm">{s.desc}</p>
                 </div>
               </Link>
             ))}

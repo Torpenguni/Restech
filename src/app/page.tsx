@@ -4,6 +4,10 @@ import {
   Faq,
   NewsletterBlock,
   PhotoGrid,
+  QuickLinksRow,
+  RegisterBanner,
+  SocialStrip,
+  Testimonials,
   SectionHead,
   SectorTicker,
   SegmentGrid,
@@ -240,6 +244,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Hear from our exhibitors */}
+      <section className="section-y">
+        <div className="container-x">
+          <SectionHead eyebrow="Exhibitor stories" title="Hear from our exhibitors" />
+          <SocialStrip />
+        </div>
+      </section>
+
+      {/* Voices from the show floor */}
+      <section className="bg-ink section-y text-white">
+        <div className="container-x">
+          <SectionHead light eyebrow="Testimonials" title="Voices from the show floor" />
+          <Testimonials />
+        </div>
+      </section>
+
       {/* 12. New at Restech */}
       <section className="section-y">
         <div className="container-x">
@@ -255,6 +275,24 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Restech 2024 highlights — the show's own photography */}
+      <section className="bg-mist section-y">
+        <div className="container-x">
+          <SectionHead eyebrow="Past edition" title="Restech 2024 highlights" />
+          <div className="grid auto-rows-[9rem] grid-cols-2 gap-3 md:auto-rows-[13rem] md:grid-cols-4">
+            {[
+              { src: "/images/atmosphere-2024.webp", cls: "col-span-2 row-span-2" },
+              { src: "/images/visitor.webp", cls: "col-span-2" },
+              { src: "/images/exhibitor.webp", cls: "" },
+              { src: "/images/kv-about.webp", cls: "" },
+            ].map(({ src, cls }) => (
+              <img key={src} src={src} alt="" loading="lazy" className={`photo h-full w-full rounded-xl ${cls}`} />
+            ))}
+          </div>
+          <div className="mt-8"><Link href="/media-gallery" className="btn-outline uppercase">View snapshots</Link></div>
         </div>
       </section>
 
@@ -305,6 +343,9 @@ export default function Home() {
           <div className="mt-10"><TripleCta /></div>
         </div>
       </section>
+
+      <QuickLinksRow />
+      <RegisterBanner />
 
       {/* 17. Newsletter — footer follows */}
       <NewsletterBlock />
