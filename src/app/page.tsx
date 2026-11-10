@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
+import SegmentIcons from "@/components/SegmentIcons";
 import {
   Faq,
   SectionHead,
   SectorTicker,
-  SegmentGrid,
   SpotlightCards,
   SponsorTiers,
   SupportedBy,
@@ -137,14 +137,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Show sectors */}
+      {/* 6. Show sectors — icon grid (THAIFEX-style) */}
       <section className="section-y">
-        <div className="container-x">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHead eyebrow="Show sectors" title={`${segments.length} sectors, from the kitchen pass to the cloud`} />
-            <Link href="/show-segments" className="btn-outline hidden shrink-0 uppercase md:mb-10 md:inline-flex">Explore all sectors</Link>
+        <div className="container-x grid gap-8 lg:grid-cols-[1fr_1.5fr] lg:items-center lg:gap-16">
+          <div>
+            <p className="eyebrow">Show sectors</p>
+            <h2 className="h2 mt-2 md:mt-3">All of restaurant tech &amp; operations <em className="text-brand">under one roof</em></h2>
+            <p className="mt-3 text-[15px] text-ink/65 md:mt-4 md:text-lg">
+              {segments.length} sectors across <strong className="font-semibold text-electric">Restaurant Technology</strong> and <strong className="font-semibold text-brand">Restaurant Operations</strong> — compare suppliers zone by zone.
+            </p>
+            <Link href="/show-segments" className="btn-outline mt-5 hidden uppercase md:mt-6 lg:inline-flex">Explore all sectors</Link>
           </div>
-          <SegmentGrid />
+          <SegmentIcons />
         </div>
       </section>
 

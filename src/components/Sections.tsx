@@ -137,7 +137,7 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
   return (
     <div className={`scroller md:grid-cols-2 md:gap-5 ${items.length === 4 ? "lg:grid-cols-4" : items.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
       {items.map((it) => (
-        <Link key={it.title} href={it.href} className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl bg-navy p-5 text-white md:aspect-[3/4] md:p-6">
+        <Link key={it.title} href={it.href} className="group relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-navy p-5 text-white md:aspect-square md:p-6">
           {it.image ? (
             <img src={it.image} alt="" className="photo absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" loading="lazy" />
           ) : (
