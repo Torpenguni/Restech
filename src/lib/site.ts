@@ -63,13 +63,6 @@ export const ticker = [
   "CRM & Loyalty", "Packaging", "Restaurant of the Future", "AI & Automation", "Business Matching",
 ];
 
-// International visitor block — links to existing travel pages
-export const travelCards: Card[] = [
-  { title: "Plan Your Visit", desc: "Opening hours, getting to IMPACT Muang Thong Thani and on-site essentials.", href: "/plan-your-visit" },
-  { title: "Visa Support", desc: "Request an invitation letter for your Thai business visa application.", href: "/visa-support" },
-  { title: "Visiting Bangkok", desc: "Hotels, transport from Suvarnabhumi (BKK) and Don Mueang (DMK) airports, and where to eat.", href: "/visiting-bangkok" },
-  { title: "Hosted Buyer Programme", desc: "Qualified buyers can apply for pre-matched supplier meetings.", href: "/hosted-buyer-programme" },
-];
 
 // "Restech 2027 by the Numbers" — visitors from restechexpo.com; exhibitor count = sum of zone counts on
 // the current homepage (35+40+20+25+20+10). TODO: confirm both with the sales team.

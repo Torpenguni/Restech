@@ -11,7 +11,7 @@ import {
   Testimonials,
   TripleCta,
 } from "@/components/Sections";
-import { cta, event, newAt, photos, segments, stats, travelCards, whatsNew, whyExhibit } from "@/lib/site";
+import { cta, event, newAt, photos, segments, stats, whatsNew, whyExhibit } from "@/lib/site";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -23,7 +23,7 @@ const audience = [
   { t: "Business matching", icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></> },
 ];
 
-// Homepage — 14 blocks. Detail lives on inner pages; quick links and newsletter live in the footer.
+// Homepage — 13 blocks. Detail lives on inner pages; quick links and newsletter live in the footer.
 export default function Home() {
   return (
     <>
@@ -161,37 +161,6 @@ export default function Home() {
               <Link key={c.title} href={c.href} className="group">
                 <h3 className="font-semibold group-hover:text-saffron">{c.title} →</h3>
                 <p className="mt-1 text-sm text-white/60">{c.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. International visitors */}
-      <section className="bg-mist section-y">
-        <div className="container-x grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="eyebrow">Travelling from abroad</p>
-            <h2 className="h2 mt-3">Your trip to Restech, <em className="text-brand">made simple.</em></h2>
-            <dl className="mt-8 divide-y divide-line border-y border-line text-sm">
-              {[
-                ["City", `${event.city}, Thailand`],
-                ["Venue", event.venue],
-                ["Airports", "Suvarnabhumi (BKK) · Don Mueang (DMK)"],
-                ["Show information", "English · ไทย"],
-              ].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-3 gap-4 py-3">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.15em] text-ink/50">{k}</dt>
-                  <dd className="col-span-2">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-            {travelCards.map((c) => (
-              <Link key={c.href} href={c.href} className="group rounded-2xl border border-line bg-paper p-6 transition hover:-translate-y-1 hover:border-brand hover:shadow-xl">
-                <h3 className="text-lg font-semibold group-hover:text-brand">{c.title} →</h3>
-                <p className="mt-2 text-sm text-ink/65">{c.desc}</p>
               </Link>
             ))}
           </div>
