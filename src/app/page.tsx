@@ -15,6 +15,14 @@ import { cta, event, newAt, photos, segments, stats, travelCards, whatsNew, whyE
 
 /* eslint-disable @next/next/no-img-element */
 
+// Who you'll meet — icon row (icon paths from Lucide, ISC licence)
+const audience = [
+  { t: "Restaurant & café owners", icon: <><path d="M17 8h1a4 4 0 1 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" /><path d="M6 2v2M10 2v2M14 2v2" /></> },
+  { t: "Chains, hotels & franchise groups", icon: <><rect x="4" y="2" width="16" height="20" rx="2" /><path d="M9 22v-4h6v4" /><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01" /></> },
+  { t: "Technology & innovation buyers", icon: <><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6M10 22h4" /></> },
+  { t: "Business matching", icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></> },
+];
+
 // Homepage — 14 blocks. Detail lives on inner pages; quick links and newsletter live in the footer.
 export default function Home() {
   return (
@@ -110,26 +118,24 @@ export default function Home() {
       <section className="bg-mist section-y">
         <div className="container-x">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHead eyebrow="Who you'll meet" title={`Your customers are at ${event.edition}`} intro="Restaurant owners, chain and hotel operators, franchise investors and technology buyers — looking for the equipment, systems and partners that move their business forward." />
+            <SectionHead eyebrow="Who you'll meet" title={`Your customers are at ${event.edition}`} intro="Decision-makers looking for the equipment, systems and partners that move their business forward." />
             <div className="flex shrink-0 flex-wrap gap-3 md:mb-14">
               <Link href={cta.bookStand.href} className="btn-primary uppercase">I want to exhibit</Link>
               <Link href={cta.sponsor.href} className="btn-outline uppercase">Sponsorship</Link>
             </div>
           </div>
-          <div className="scroller md:grid-cols-4 md:gap-4">
-            {[
-              { t: "Restaurant & café owners", img: photos.dinner },
-              { t: "Chains, hotels & franchise groups", img: photos.crowd },
-              { t: "Technology & innovation buyers", img: photos.booth },
-              { t: "Business matching", img: photos.matching },
-            ].map(({ t, img }) => (
-              <div key={t} className="relative flex aspect-[4/5] items-end overflow-hidden rounded-2xl bg-navy p-5 text-white">
-                <img src={img} alt="" className="photo absolute inset-0 h-full w-full" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
-                <span className="font-display relative text-xl font-semibold leading-tight">{t}</span>
-              </div>
+          <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            {audience.map(({ t, icon }) => (
+              <li key={t} className="flex items-center gap-3 rounded-2xl border border-line bg-white/70 px-4 py-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {icon}
+                  </svg>
+                </span>
+                <span className="text-sm font-semibold leading-snug md:text-base">{t}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
