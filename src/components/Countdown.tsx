@@ -24,9 +24,9 @@ export default function Countdown({ date }: { date: string }) {
   if (t && Date.now() > target)
     return <p className="rounded-xl bg-white/10 px-5 py-3 text-sm font-medium">This edition has ended — see you at the next Restech!</p>;
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-2 sm:gap-3">
       {Object.entries(t ?? { Days: 0, Hours: 0, Minutes: 0, Seconds: 0 }).map(([k, v]) => (
-        <div key={k} className="min-w-16 rounded-xl bg-white/10 px-3 py-2 text-center backdrop-blur">
+        <div key={k} className="min-w-[4.25rem] rounded-xl bg-white/10 px-2 py-2 text-center backdrop-blur sm:min-w-16 sm:px-3">
           <div className="text-2xl font-semibold tabular-nums">{t ? String(v).padStart(2, "0") : "--"}</div>
           <div className="text-[10px] uppercase tracking-widest text-white/60">{k}</div>
         </div>

@@ -14,10 +14,10 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-ink text-white shadow-lg">
-      <div className="container-x flex h-20 items-center justify-between gap-6" onMouseLeave={() => setOpen(null)}>
+      <div className="container-x flex h-16 items-center md:h-20 justify-between gap-6" onMouseLeave={() => setOpen(null)}>
         <Link href="/" className="shrink-0" onClick={close}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo-2027.webp" alt="Restech 2027 — Restaurant Technology Expo" className="h-12 w-auto" />
+          <img src="/images/logo-2027.webp" alt="Restech 2027 — Restaurant Technology Expo" className="h-10 w-auto md:h-12" />
         </Link>
 
         {/* Mega menu — 5 top-level items */}
@@ -75,22 +75,22 @@ export default function Header() {
           <Link href="/th" className="px-2 text-sm font-bold hover:text-brand">ไทย</Link>
         </div>
 
-        <button className="xl:hidden" aria-label="Menu" onClick={() => setMobile(!mobile)}>
+        <button className="-mr-2 p-2 xl:hidden" aria-label="Menu" aria-expanded={mobile} onClick={() => setMobile(!mobile)}>
           <span className="text-2xl">{mobile ? "✕" : "☰"}</span>
         </button>
       </div>
 
       {mobile && (
-        <div className="max-h-[80vh] overflow-y-auto border-t border-white/10 xl:hidden">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/10 xl:hidden">
           <div className="container-x space-y-2 py-4">
             {nav.map((item) => (
               <details key={item.label} className="border-b border-white/10 py-2">
-                <summary className="cursor-pointer font-bold uppercase">{item.label}</summary>
+                <summary className="cursor-pointer py-1 font-bold uppercase">{item.label}</summary>
                 {item.groups.map((g) => (
                   <div key={g.title} className="mt-3 pl-3">
                     <p className="text-xs font-bold uppercase tracking-widest text-brand">{g.title}</p>
                     {g.links.map((l) => (
-                      <Link key={l.href + l.label} href={l.href} onClick={close} className="block py-1.5 text-sm">
+                      <Link key={l.href + l.label} href={l.href} onClick={close} className="block py-2.5 text-[15px]">
                         {l.label}
                       </Link>
                     ))}

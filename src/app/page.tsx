@@ -25,7 +25,7 @@ export default function Home() {
     <>
       {/* 1. Hero banner — key visual, dates, venue, 3 CTAs */}
       <section className="bg-hero relative overflow-hidden text-white">
-        <div className="container-x relative flex flex-col items-center py-20 text-center md:py-28">
+        <div className="container-x relative flex flex-col items-center section-y text-center md:py-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo-2027.webp" alt={event.fullName} className="w-full max-w-xl" />
           <p className="mt-6 text-lg md:text-xl">
@@ -43,7 +43,7 @@ export default function Home() {
       <StatsBar />
 
       {/* 4. Photo strip + "Your customers are at Restech" */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <div className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-4">
             {[
@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* 5. Key Segments — two groups */}
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead center title="Key Segments" intro="Restaurant technology and restaurant operations — every zone of the show." />
           <SegmentGrid />
@@ -82,7 +82,7 @@ export default function Home() {
       </section>
 
       {/* 6. What's New — spotlight cards */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead center title="What's New" />
           <SpotlightCards items={whatsNew} />
@@ -90,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* 7. Show floor / floor plan */}
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead center title="IMPACT Hall 5–6 Floor Plan" intro="Reference floor plan from Restech 2026 — the 2027 layout will be announced soon." />
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* 8. Why Leading Brands Choose Restech — 6 cards */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead center title="Why Leading Brands Choose Restech" />
           <CardGrid items={whyExhibit} />
@@ -107,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* 9. Exhibitor testimonial strip */}
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead center title="Hear From Our Exhibitors" />
           <SocialStrip />
@@ -115,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* 10. Voices from the Show Floor */}
-      <section className="bg-ink py-20 text-white">
+      <section className="bg-ink section-y text-white">
         <div className="container-x">
           <div className="mb-10 text-center"><h2 className="h2">Voices from the Show Floor</h2></div>
           <Testimonials />
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* 11. Sponsors by tier */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SupportedBy />
           <SectionHead center title="Our Partners & Sponsors" />
@@ -135,7 +135,7 @@ export default function Home() {
       <CountdownBanner />
 
       {/* 13. Be Part of ... — 3 CTAs */}
-      <section className="bg-hero py-20 text-white">
+      <section className="bg-hero section-y text-white">
         <div className="container-x flex flex-col items-center text-center">
           <h2 className="text-4xl font-semibold md:text-5xl">Be Part of <span className="text-brand">Restech 2027</span></h2>
           <p className="mt-4 max-w-xl text-white/70">Step Into The Future — limited stands available in each zone.</p>
@@ -144,7 +144,7 @@ export default function Home() {
       </section>
 
       {/* 14. New at Restech */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead center title={`New at ${event.edition}`} />
           <SpotlightCards items={newAt} />
@@ -152,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* 15. Event Highlights photo grid */}
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead center title="Restech 2024 Highlights" />
           <PhotoGrid />
@@ -161,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* 16. FAQ */}
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead center title="Frequently Asked Questions" />
           <Faq />

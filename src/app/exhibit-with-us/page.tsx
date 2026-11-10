@@ -18,7 +18,7 @@ export default function ExhibitWithUs() {
         <Link href={cta.bookStand.href} className="btn-primary uppercase">I&apos;m ready to exhibit!</Link>
         <Link href={cta.brochure.href} className="btn-ghost uppercase">{cta.brochure.label}</Link>
       </PageHero>
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead eyebrow="Why Restech" title="Why Leading Brands Choose Restech" />
           <CardGrid items={whyExhibit} />
@@ -34,12 +34,12 @@ export default function ExhibitWithUs() {
           <Link href={cta.sponsor.href} className="btn-blue uppercase">Let&apos;s talk sponsorship</Link>
         </div>
       </section>
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead eyebrow="How it works" title="How to Register as an Exhibitor" />
-          <ol className="grid gap-5 md:grid-cols-4">
+          <ol className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
             {steps.map((s, i) => (
-              <li key={s.title} className="rounded-2xl border border-ink/10 p-6">
+              <li key={s.title} className="rounded-2xl border border-ink/10 p-4 md:p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-semibold text-white">{i + 1}</span>
                 <h3 className="mt-4 font-bold">{s.title}</h3>
                 <p className="mt-1 text-sm text-ink/70">{s.desc}</p>
@@ -51,7 +51,7 @@ export default function ExhibitWithUs() {
       <section className="py-6">
         <p className="container-x text-center text-xs text-ink/50">Government incentive / endorsement details for exhibitors (e.g. trade promotion support) — TBC.</p>
       </section>
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead title="Voices from the Show Floor" />
           <Testimonials />

@@ -33,8 +33,8 @@ export default function ExhibitorForm() {
         <legend className="label">Interested in <span className="text-brand">*</span></legend>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {participation.map((p, i) => (
-            <label key={p} className="flex items-center gap-2 text-sm">
-              <input type="radio" name="participation" value={p} required={i === 0} className="accent-brand" /> {p}
+            <label key={p} className="flex items-center gap-3 py-1.5 text-sm">
+              <input type="radio" name="participation" value={p} required={i === 0} className="h-5 w-5 shrink-0 accent-brand" /> {p}
             </label>
           ))}
         </div>

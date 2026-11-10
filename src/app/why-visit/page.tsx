@@ -25,24 +25,24 @@ export default function WhyVisit() {
         <div className="container-x">
           <div className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-5">
             {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="flex aspect-square items-center justify-center rounded-2xl bg-ink/5 text-xs text-ink/40">Photo</div>
+              <div key={i} className={`aspect-square items-center justify-center rounded-2xl bg-ink/5 text-xs text-ink/40 ${i === 4 ? "hidden md:flex" : "flex"}`}>Photo</div>
             ))}
           </div>
-          <p className="mx-auto max-w-3xl text-center text-lg text-ink/70">
+          <p className="mx-auto max-w-3xl text-center text-base text-ink/70 md:text-lg">
             From {event.dateLabel} in {event.city}, {event.edition} brings together an expected {visitors.value} {visitors.label.toLowerCase()} and {exhibitors.value} {exhibitors.label.toLowerCase()} from across the region — every system a restaurant runs on, under one roof.
           </p>
         </div>
       </section>
-      <section className="bg-mist py-20">
+      <section className="bg-mist section-y">
         <div className="container-x">
           <SectionHead center title="Why Restech Is the Definitive Platform for Growth" />
           <CardGrid items={whyVisit} />
         </div>
       </section>
-      <section className="py-20">
+      <section className="section-y">
         <div className="container-x">
           <SectionHead center title="How to Maximise Your Visit" />
-          <ol className="grid gap-4 md:grid-cols-5">
+          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
             {tips.map((t, i) => (
               <li key={t.title} className="rounded-2xl border border-ink/10 p-5 text-sm">
                 <span className="text-2xl font-semibold text-brand">{i + 1}</span>

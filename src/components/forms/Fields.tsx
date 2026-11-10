@@ -32,7 +32,7 @@ export function Consent() {
   return (
     <div className="space-y-3 text-sm">
       <label className="flex items-start gap-3">
-        <input type="checkbox" name="consent_marketing" className="mt-1 accent-brand" />
+        <input type="checkbox" name="consent_marketing" className="mt-0.5 h-5 w-5 shrink-0 accent-brand" />
         <span>I agree to receive event news and offers from Restech and its partners. I can unsubscribe at any time.</span>
       </label>
       <p className="text-xs text-ink/60">

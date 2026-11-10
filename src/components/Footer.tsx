@@ -4,7 +4,7 @@ import NewsletterForm from "./forms/NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="bg-hero text-white">
+    <footer className="bg-hero pb-20 text-white md:pb-0">
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Follow Us */}
         <div>
@@ -14,7 +14,7 @@ export default function Footer() {
           <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-widest text-white/50">Follow Us</p>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
             {social.map((s) => (
-              <li key={s.label}><a href={s.href} className="hover:text-brand">{s.label}</a></li>
+              <li key={s.label}><a href={s.href} className="inline-block py-1.5 hover:text-brand">{s.label}</a></li>
             ))}
           </ul>
           <p className="mt-4 text-sm text-brand">{event.hashtags.join(" ")}</p>
@@ -22,9 +22,9 @@ export default function Footer() {
         {/* Quick Links */}
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">Quick Links</p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-0.5 text-sm">
             {quickLinks.map((l) => (
-              <li key={l.href}><Link href={l.href} className="hover:text-brand">{l.label}</Link></li>
+              <li key={l.href}><Link href={l.href} className="inline-block py-1.5 hover:text-brand">{l.label}</Link></li>
             ))}
           </ul>
         </div>
@@ -56,8 +56,8 @@ export default function Footer() {
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/50 md:flex-row">
           <span>© {new Date().getFullYear()} {event.organiser} All rights reserved.</span>
           <span className="flex gap-4">
-            <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/sitemap" className="hover:text-white">Site Map</Link>
+            <Link href="/privacy-policy" className="py-2 hover:text-white">Privacy Policy</Link>
+            <Link href="/sitemap" className="py-2 hover:text-white">Site Map</Link>
           </span>
         </div>
       </div>

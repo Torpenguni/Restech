@@ -4,9 +4,12 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RegisterPopup from "@/components/RegisterPopup";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import { event } from "@/lib/site";
 
 const prompt = Prompt({ subsets: ["latin", "thai"], weight: ["300", "400", "500", "600", "700"], variable: "--font-prompt", display: "swap" });
+
+export const viewport = { themeColor: "#030a2b" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
@@ -24,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <RegisterPopup />
+        <MobileCtaBar />
       </body>
     </html>
   );

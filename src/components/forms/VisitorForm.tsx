@@ -32,8 +32,8 @@ export default function VisitorForm() {
         <legend className="label">What are you looking for? (select all that apply)</legend>
         <div className="grid gap-2 sm:grid-cols-2">
           {segmentNames.map((s) => (
-            <label key={s} className="flex items-center gap-2 text-sm">
-              <input type="checkbox" name="interests" value={s} className="accent-brand" /> {s}
+            <label key={s} className="flex items-center gap-3 py-1.5 text-sm">
+              <input type="checkbox" name="interests" value={s} className="h-5 w-5 shrink-0 accent-brand" /> {s}
             </label>
           ))}
         </div>

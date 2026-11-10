@@ -32,9 +32,9 @@ export function PageHero({ eyebrow, title, intro, children }: { eyebrow: string;
     <section className="bg-hero text-white">
       <div className="container-x py-14 md:py-20">
         <Breadcrumb items={[{ label: eyebrow }, { label: title }]} />
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1>
-        {intro && <p className="mt-4 max-w-2xl text-lg text-white/70">{intro}</p>}
-        {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
+        <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">{title}</h1>
+        {intro && <p className="mt-4 max-w-2xl text-base text-white/70 md:text-lg">{intro}</p>}
+        {children && <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">{children}</div>}
       </div>
     </section>
   );
@@ -43,10 +43,10 @@ export function PageHero({ eyebrow, title, intro, children }: { eyebrow: string;
 /** Three primary CTAs used in hero and "Be part of" blocks. */
 export function TripleCta({ dark = true }: { dark?: boolean }) {
   return (
-    <div className="flex flex-wrap gap-3">
-      <Link href={cta.exhibit.href} className="btn-primary uppercase">{cta.exhibit.label}</Link>
-      <Link href={cta.register.href} className="btn-blue uppercase">{cta.register.label}</Link>
-      <Link href={cta.brochure.href} className={`${dark ? "btn-ghost" : "btn-outline"} uppercase`}>{cta.brochure.label}</Link>
+    <div className="grid w-full grid-cols-2 gap-3 sm:flex sm:w-auto sm:flex-wrap sm:justify-center">
+      <Link href={cta.exhibit.href} className="btn-primary px-3 uppercase">{cta.exhibit.label}</Link>
+      <Link href={cta.register.href} className="btn-blue px-3 uppercase">{cta.register.label}</Link>
+      <Link href={cta.brochure.href} className={`${dark ? "btn-ghost" : "btn-outline"} col-span-2 uppercase`}>{cta.brochure.label}</Link>
     </div>
   );
 }
@@ -55,10 +55,10 @@ export function TripleCta({ dark = true }: { dark?: boolean }) {
 export function CountdownBanner() {
   return (
     <Link href={cta.register.href} className="block bg-brand text-white transition hover:brightness-105">
-      <div className="container-x flex flex-col items-center justify-between gap-6 py-10 md:flex-row">
+      <div className="container-x flex flex-col items-center justify-between gap-6 py-10 text-center md:flex-row md:text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">{event.dateLabel} · {event.venue}</p>
-          <p className="mt-2 text-3xl font-semibold md:text-4xl">The countdown to {event.edition} has begun</p>
+          <p className="mt-2 text-2xl font-semibold md:text-4xl">The countdown to {event.edition} has begun</p>
         </div>
         <div className="flex flex-col items-center gap-3">
           <Countdown date={event.startDate} />
@@ -90,7 +90,7 @@ export function StatsBar({ title = `${event.edition} by the Numbers` }: { title?
 
 export function CardGrid({ items, numbered = true }: { items: { title: string; desc: string; href?: string }[]; numbered?: boolean }) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="scroller md:grid-cols-2 md:gap-5 lg:grid-cols-3">
       {items.map((it, i) => {
         const inner = (
           <>
@@ -113,7 +113,7 @@ export function CardGrid({ items, numbered = true }: { items: { title: string; d
 /** Spotlight cards with image placeholder (FHA "What's New" / "New at"). */
 export function SpotlightCards({ items }: { items: { title: string; desc: string; href: string; image?: string }[] }) {
   return (
-    <div className={`grid gap-5 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : items.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
+    <div className={`scroller md:grid-cols-2 md:gap-5 ${items.length === 4 ? "lg:grid-cols-4" : items.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
       {items.map((it) => (
         <Link key={it.title} href={it.href} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink/5 transition hover:-translate-y-1 hover:shadow-lg">
           {it.image ? (
@@ -156,7 +156,7 @@ export function SegmentGrid() {
 /** Exhibitor testimonial image strip (FHA links these to Instagram). */
 export function SocialStrip() {
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="scroller md:grid-cols-3 md:gap-4">
       {[1, 2, 3].map((i) => (
         <a key={i} href="#" className="flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br from-brand/80 to-navy text-xs text-white/70">
           Exhibitor story #{i} (Instagram)
@@ -168,7 +168,7 @@ export function SocialStrip() {
 
 export function Testimonials() {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className="scroller md:grid-cols-3 md:gap-5">
       {testimonials.map((t, i) => (
         <figure key={i} className="rounded-2xl bg-navy p-6 text-white">
           <p className="text-xs font-bold uppercase tracking-widest text-brand">{t.type}</p>
@@ -196,13 +196,13 @@ export function SupportedBy() {
 
 export function SponsorTiers() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       {sponsorTiers.map((t) => (
         <div key={t.tier}>
           <p className="mb-3 text-center text-xs font-bold uppercase tracking-widest text-ink/50">{t.tier}</p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {Array.from({ length: t.count }).map((_, i) => (
-              <div key={i} className="flex h-20 w-40 items-center justify-center rounded-xl border border-dashed border-ink/20 text-xs text-ink/40">
+              <div key={i} className="flex h-14 w-[30%] items-center justify-center rounded-xl border border-dashed border-ink/20 text-[10px] text-ink/40 md:h-20 md:w-40 md:text-xs">
                 Your logo here
               </div>
             ))}
@@ -228,12 +228,12 @@ export function Faq() {
   return (
     <div className="mx-auto max-w-3xl divide-y divide-ink/10 rounded-2xl border border-ink/10 bg-white">
       {faqs.map((f) => (
-        <details key={f.q} className="group p-5">
-          <summary className="flex cursor-pointer list-none items-center justify-between font-semibold">
+        <details key={f.q} className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold">
             {f.q}
             <span className="text-brand transition group-open:rotate-45">+</span>
           </summary>
-          <p className="mt-3 text-sm text-ink/70">{f.a}</p>
+          <p className="-mt-2 px-5 pb-5 text-sm text-ink/70">{f.a}</p>
         </details>
       ))}
     </div>
@@ -245,9 +245,9 @@ export function QuickLinksRow() {
     <section className="border-y border-ink/10 bg-white py-10">
       <div className="container-x">
         <p className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-ink/50">Quick Links</p>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center">
           {quickLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="btn-outline">{l.label}</Link>
+            <Link key={l.href} href={l.href} className="btn-outline px-3 text-center last:col-span-2">{l.label}</Link>
           ))}
         </div>
       </div>
@@ -283,7 +283,7 @@ export function CtaBand({ title, text, mode = "both" }: { title: string; text?: 
           <h2 className="text-2xl font-semibold md:text-3xl">{title}</h2>
           {text && <p className="mt-2 text-white/80">{text}</p>}
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="grid w-full grid-cols-1 gap-3 sm:flex sm:w-auto sm:flex-wrap">
           {mode !== "register" && <Link href={cta.bookStand.href} className="btn bg-white uppercase text-electric hover:bg-white/90">{cta.bookStand.label}</Link>}
           {mode !== "exhibit" && <Link href={cta.register.href} className="btn-primary uppercase">{cta.register.label}</Link>}
           <Link href={cta.brochure.href} className="btn-ghost uppercase">{cta.brochure.label}</Link>
