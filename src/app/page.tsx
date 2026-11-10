@@ -61,19 +61,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Countdown — large trade-show style numerals */}
-      <section className="border-b border-line bg-white">
-        <div className="container-x grid items-center gap-8 py-12 md:py-14 lg:grid-cols-12 lg:gap-10">
-          <div className="text-center lg:col-span-4 lg:text-left">
-            <p className="eyebrow">Countdown to {event.edition}</p>
-            <p className="mt-3 text-3xl font-semibold md:text-4xl">{event.dateLabel}</p>
-            <p className="mt-2 text-ink/60">{event.venue}, {event.city}</p>
-            <Link href={cta.register.href} className="mt-6 inline-block text-sm font-bold uppercase tracking-widest text-brand underline underline-offset-4 hover:text-brand-dark">
-              Register now →
-            </Link>
-          </div>
-          <div className="lg:col-span-8">
+      {/* 2. Countdown bar */}
+      <section className="bg-paper py-6 md:py-8">
+        <div className="container-x">
+          <div className="grid items-center gap-5 rounded-3xl bg-mist px-6 py-6 text-center md:grid-cols-[1fr_auto_1fr] md:gap-8 md:px-10 md:text-left">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-ink/80">Countdown to {event.edition}</p>
             <Countdown date={event.startDate} size="lg" />
+            <p className="text-sm text-ink/65 md:justify-self-end">Opening hours: {event.hours}<br className="hidden md:block" /> (Bangkok time)</p>
           </div>
         </div>
       </section>
@@ -105,9 +99,9 @@ export default function Home() {
             </div>
           </div>
           <div className="grid h-[24rem] grid-cols-5 grid-rows-6 gap-3 md:h-[32rem]">
-            <img src={photos.spread} alt="Plates of Asian dishes on a dark table" className="photo col-span-3 row-span-6 h-full w-full rounded-2xl" loading="lazy" />
-            <img src={photos.dimSum} alt="Dim sum in bamboo steamers" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
-            <img src={photos.plating} alt="Chef plating dishes on the pass" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.expo} alt="Crowded aisles between exhibitor stands" className="photo col-span-3 row-span-6 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.hall} alt="Packed seminar hall during a keynote" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.networking} alt="Restaurant owners networking over dinner" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
           </div>
         </div>
       </section>
@@ -125,8 +119,8 @@ export default function Home() {
           <div className="scroller md:grid-cols-4 md:gap-4">
             {[
               { t: "Restaurant & café owners", img: photos.dinner },
-              { t: "Chains, hotels & franchise groups", img: photos.hall },
-              { t: "Technology & innovation buyers", img: photos.expo },
+              { t: "Chains, hotels & franchise groups", img: photos.crowd },
+              { t: "Technology & innovation buyers", img: photos.booth },
               { t: "Business matching", img: photos.matching },
             ].map(({ t, img }) => (
               <div key={t} className="relative flex aspect-[4/5] items-end overflow-hidden rounded-2xl bg-navy p-5 text-white">

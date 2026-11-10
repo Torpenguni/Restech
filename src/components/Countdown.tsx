@@ -14,7 +14,7 @@ function diff(target: number) {
 
 /**
  * size="sm": compact glass tiles (on dark backgrounds).
- * size="lg": large trade-show style numerals with labels underneath (on light backgrounds).
+ * size="lg": trade-show style numerals with colon separators (on light backgrounds).
  */
 export default function Countdown({ date, size = "sm" }: { date: string; size?: "sm" | "lg" }) {
   const target = new Date(date).getTime();
@@ -32,13 +32,14 @@ export default function Countdown({ date, size = "sm" }: { date: string; size?: 
 
   if (size === "lg")
     return (
-      <div className="grid grid-cols-4 divide-x divide-ink/10" role="timer" aria-live="off">
-        {units.map(([k, v]) => (
-          <div key={k} className="px-2 text-center sm:px-4 md:px-8">
-            <div className="text-5xl font-semibold leading-none tabular-nums text-brand sm:text-6xl md:text-7xl lg:text-8xl">
-              {t ? String(v).padStart(2, "0") : "--"}
+      <div className="flex items-start justify-center" role="timer" aria-live="off">
+        {units.map(([k, v], i) => (
+          <div key={k} className="flex items-start">
+            {i > 0 && <span className="px-2 pt-1 text-2xl font-light text-ink/25 sm:px-5 md:text-3xl">:</span>}
+            <div className="min-w-[3.5rem] text-center md:min-w-[5rem]">
+              <div className="text-4xl font-semibold leading-none tabular-nums text-brand md:text-5xl">{t ? String(v).padStart(2, "0") : "--"}</div>
+              <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-ink/60 md:text-xs">{k}</div>
             </div>
-            <div className="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-ink/55 sm:text-xs">{k}</div>
           </div>
         ))}
       </div>
