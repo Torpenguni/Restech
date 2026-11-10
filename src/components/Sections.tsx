@@ -7,10 +7,10 @@ import { cta, event, faqs, photos, quickLinks, segmentGroups, sponsorTiers, stat
 
 export function SectionHead({ eyebrow, title, intro, center, light }: { eyebrow?: string; title: string; intro?: string; center?: boolean; light?: boolean }) {
   return (
-    <div className={`mb-10 max-w-3xl md:mb-14 ${center ? "mx-auto text-center" : ""}`}>
+    <div className={`mb-6 max-w-3xl md:mb-10 ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 className={`h2 ${eyebrow ? "mt-3" : ""}`}>{title}</h2>
-      {intro && <p className={`mt-4 text-base md:text-lg ${light ? "text-white/70" : "text-ink/65"}`}>{intro}</p>}
+      <h2 className={`h2 ${eyebrow ? "mt-2 md:mt-3" : ""}`}>{title}</h2>
+      {intro && <p className={`mt-3 text-[15px] md:mt-4 md:text-lg ${light ? "text-white/70" : "text-ink/65"}`}>{intro}</p>}
     </div>
   );
 }
@@ -35,9 +35,9 @@ export function PageHero({ eyebrow, title, intro, image = photos.expo, children 
     <section className="relative overflow-hidden bg-ink text-white">
       <img src={image} alt="" className="photo absolute inset-0 h-full w-full opacity-35" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
-      <div className="container-x relative py-16 md:py-24">
+      <div className="container-x relative py-10 md:py-20">
         <Breadcrumb items={[{ label: eyebrow }, { label: title }]} />
-        <h1 className="font-display max-w-3xl text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl">{title}</h1>
+        <h1 className="font-display max-w-3xl text-[2rem] font-semibold leading-[1.1] sm:text-5xl md:text-6xl">{title}</h1>
         {intro && <p className="mt-5 max-w-2xl text-base text-white/75 md:text-lg">{intro}</p>}
         {children && <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">{children}</div>}
       </div>
@@ -123,9 +123,9 @@ export function CardGrid({ items, numbered = true, dark = false }: { items: { ti
           </>
         );
         return it.href ? (
-          <Link key={it.title} href={it.href} className={`rounded-2xl border p-7 transition hover:-translate-y-1 hover:shadow-xl ${base}`}>{inner}</Link>
+          <Link key={it.title} href={it.href} className={`rounded-2xl border p-5 transition hover:-translate-y-1 hover:shadow-xl md:p-7 ${base}`}>{inner}</Link>
         ) : (
-          <div key={it.title} className={`rounded-2xl border p-7 ${base}`}>{inner}</div>
+          <div key={it.title} className={`rounded-2xl border p-5 md:p-7 ${base}`}>{inner}</div>
         );
       })}
     </div>
@@ -137,7 +137,7 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
   return (
     <div className={`scroller md:grid-cols-2 md:gap-5 ${items.length === 4 ? "lg:grid-cols-4" : items.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
       {items.map((it) => (
-        <Link key={it.title} href={it.href} className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-2xl bg-navy p-6 text-white">
+        <Link key={it.title} href={it.href} className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl bg-navy p-5 text-white md:aspect-[3/4] md:p-6">
           {it.image ? (
             <img src={it.image} alt="" className="photo absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" loading="lazy" />
           ) : (
@@ -145,7 +145,7 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
           <div className="relative">
-            <h3 className="font-display text-2xl font-semibold leading-tight">{it.title}</h3>
+            <h3 className="font-display text-xl font-semibold leading-tight md:text-2xl">{it.title}</h3>
             <p className="mt-2 text-sm text-white/75">{it.desc}</p>
             <span className="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-saffron">Find out more →</span>
           </div>
@@ -158,21 +158,21 @@ export function SpotlightCards({ items }: { items: { title: string; desc: string
 /** Show sectors as photo tiles, grouped. */
 export function SegmentGrid() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-8 md:space-y-12">
       {segmentGroups.map((g) => (
         <div key={g.key}>
-          <div className="mb-5 flex items-center gap-4">
+          <div className="mb-3 flex items-center gap-4 md:mb-5">
             <h3 className="text-xs font-bold uppercase tracking-[0.22em] text-brand">{g.title}</h3>
             <span className="h-px flex-1 bg-line" />
           </div>
           <div className={`grid grid-cols-2 gap-4 ${g.items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
             {g.items.map((s) => (
-              <Link key={s.slug} href={`/segments/${s.slug}`} className="group relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-navy p-5 text-white">
+              <Link key={s.slug} href={`/segments/${s.slug}`} className="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl bg-navy p-3 text-white sm:aspect-[4/3] md:rounded-2xl md:p-5">
                 {s.image && <img src={s.image} alt="" className="photo absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" loading="lazy" />}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent" />
                 <div className="relative">
-                  <h4 className="text-base font-semibold leading-snug md:text-lg">{s.name}</h4>
-                  <p className="mt-1 text-xs text-white/75 md:text-sm">{s.desc}</p>
+                  <h4 className="text-sm font-semibold leading-snug md:text-lg">{s.name}</h4>
+                  <p className="mt-1 hidden text-white/75 sm:block sm:text-xs md:text-sm">{s.desc}</p>
                 </div>
               </Link>
             ))}
@@ -202,10 +202,10 @@ export function Testimonials() {
   return (
     <div className="scroller md:grid-cols-3 md:gap-5">
       {testimonials.map((t, i) => (
-        <figure key={i} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7 text-white">
+        <figure key={i} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-white md:p-7">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron">{t.type}</p>
-          <span className="font-display mt-4 text-6xl leading-none text-brand">“</span>
-          <blockquote className="font-display -mt-4 flex-1 text-lg leading-relaxed text-white/90">{t.quote}</blockquote>
+          <span className="font-display mt-3 text-5xl leading-none text-brand md:text-6xl">“</span>
+          <blockquote className="font-display -mt-4 flex-1 text-base leading-relaxed text-white/90 md:text-lg">{t.quote}</blockquote>
           <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm">
             <span className="font-semibold">{t.name}</span>
             <span className="block text-white/50">{t.role}</span>
@@ -218,8 +218,8 @@ export function Testimonials() {
 
 export function SupportedBy() {
   return (
-    <div className="mb-16 text-center">
-      <p className="eyebrow mb-6">Official supporters</p>
+    <div className="mb-10 text-center md:mb-16">
+      <p className="eyebrow mb-4 md:mb-6">Official supporters</p>
       <img src="/images/supported-by.png" alt="Official supporters of Restech 2027" className="mx-auto w-full max-w-3xl" loading="lazy" />
     </div>
   );
@@ -227,13 +227,13 @@ export function SupportedBy() {
 
 export function SponsorTiers() {
   return (
-    <div className="space-y-6 md:space-y-8">
+    <div className="space-y-4 md:space-y-8">
       {sponsorTiers.map((t) => (
         <div key={t.tier}>
           <p className="mb-3 text-center text-xs font-bold uppercase tracking-widest text-ink/45">{t.tier}</p>
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {Array.from({ length: t.count }).map((_, i) => (
-              <div key={i} className="flex h-14 w-[30%] items-center justify-center rounded-xl border border-dashed border-ink/20 bg-white/60 text-[10px] text-ink/40 md:h-20 md:w-40 md:text-xs">
+              <div key={i} className="flex h-11 w-[30%] items-center justify-center rounded-xl border border-dashed border-ink/20 bg-white/60 text-[10px] text-ink/40 md:h-20 md:w-40 md:text-xs">
                 Your logo here
               </div>
             ))}
@@ -269,11 +269,11 @@ export function Faq() {
     <div className="mx-auto max-w-3xl divide-y divide-line border-y border-line">
       {faqs.map((f) => (
         <details key={f.q} className="group">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-medium">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-medium md:py-6 md:text-lg">
             {f.q}
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-brand transition group-open:rotate-45">+</span>
           </summary>
-          <p className="-mt-2 pb-6 pr-12 text-ink/65">{f.a}</p>
+          <p className="-mt-1 pb-4 pr-10 text-sm text-ink/65 md:pb-6 md:text-base">{f.a}</p>
         </details>
       ))}
     </div>
@@ -321,9 +321,9 @@ export function CtaBand({ title, text, mode = "both" }: { title: string; text?: 
   return (
     <section className="relative overflow-hidden bg-ink text-white">
       <img src={photos.spread} alt="" className="photo absolute inset-0 h-full w-full opacity-25" loading="lazy" />
-      <div className="container-x relative flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center">
+      <div className="container-x relative flex flex-col items-start justify-between gap-5 py-10 md:flex-row md:items-center md:py-14">
         <div>
-          <h2 className="font-display text-3xl font-semibold md:text-4xl">{title}</h2>
+          <h2 className="font-display text-2xl font-semibold md:text-4xl">{title}</h2>
           {text && <p className="mt-2 text-white/75">{text}</p>}
         </div>
         <div className="grid w-full grid-cols-1 gap-3 sm:flex sm:w-auto sm:flex-wrap">
