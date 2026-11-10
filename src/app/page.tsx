@@ -57,15 +57,29 @@ export default function Home() {
                 <dd className="mt-1">Trade visitors only</dd>
               </div>
             </dl>
-            <div className="mt-6 border-t border-white/10 pt-6">
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">Doors open in</p>
-              <Countdown date={event.startDate} />
-            </div>
+            <Link href={cta.register.href} className="btn-primary mt-7 w-full uppercase">Get your free trade pass</Link>
           </aside>
         </div>
       </section>
 
-      {/* 2. Sector ticker */}
+      {/* 2. Countdown — large trade-show style numerals */}
+      <section className="border-b border-line bg-white">
+        <div className="container-x grid items-center gap-8 py-12 md:py-16 lg:grid-cols-12 lg:gap-10">
+          <div className="text-center lg:col-span-4 lg:text-left">
+            <p className="eyebrow">Countdown to {event.edition}</p>
+            <p className="mt-3 text-3xl font-semibold md:text-4xl">{event.dateLabel}</p>
+            <p className="mt-2 text-ink/60">{event.venue}, {event.city}</p>
+            <Link href={cta.register.href} className="mt-6 inline-block text-sm font-bold uppercase tracking-widest text-brand underline underline-offset-4 hover:text-brand-dark">
+              Register now →
+            </Link>
+          </div>
+          <div className="lg:col-span-8">
+            <Countdown date={event.startDate} size="lg" />
+          </div>
+        </div>
+      </section>
+
+      {/* Sector ticker */}
       <SectorTicker />
 
       {/* 3. Positioning statement + food mosaic */}

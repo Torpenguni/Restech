@@ -12,7 +12,11 @@ function diff(target: number) {
   };
 }
 
-export default function Countdown({ date }: { date: string }) {
+/**
+ * size="sm": compact glass tiles (on dark backgrounds).
+ * size="lg": large trade-show style numerals with labels underneath (on light backgrounds).
+ */
+export default function Countdown({ date, size = "sm" }: { date: string; size?: "sm" | "lg" }) {
   const target = new Date(date).getTime();
   const [t, setT] = useState<ReturnType<typeof diff> | null>(null);
   useEffect(() => {
@@ -23,9 +27,26 @@ export default function Countdown({ date }: { date: string }) {
 
   if (t && Date.now() > target)
     return <p className="rounded-xl bg-white/10 px-5 py-3 text-sm font-medium">This edition has ended — see you at the next Restech!</p>;
+
+  const units = Object.entries(t ?? { Days: 0, Hours: 0, Minutes: 0, Seconds: 0 });
+
+  if (size === "lg")
+    return (
+      <div className="grid grid-cols-4 divide-x divide-ink/10" role="timer" aria-live="off">
+        {units.map(([k, v]) => (
+          <div key={k} className="px-2 text-center sm:px-4 md:px-8">
+            <div className="text-5xl font-semibold leading-none tabular-nums text-brand sm:text-6xl md:text-7xl lg:text-8xl">
+              {t ? String(v).padStart(2, "0") : "--"}
+            </div>
+            <div className="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-ink/55 sm:text-xs">{k}</div>
+          </div>
+        ))}
+      </div>
+    );
+
   return (
     <div className="flex gap-2 sm:gap-3">
-      {Object.entries(t ?? { Days: 0, Hours: 0, Minutes: 0, Seconds: 0 }).map(([k, v]) => (
+      {units.map(([k, v]) => (
         <div key={k} className="min-w-[4.25rem] rounded-xl bg-white/10 px-2 py-2 text-center backdrop-blur sm:min-w-16 sm:px-3">
           <div className="text-2xl font-semibold tabular-nums">{t ? String(v).padStart(2, "0") : "--"}</div>
           <div className="text-[10px] uppercase tracking-widest text-white/60">{k}</div>
