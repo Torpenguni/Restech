@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CtaBand, PageHero } from "@/components/Sections";
+import { CardGrid, CtaBand, PageHero } from "@/components/Sections";
 import { infoPages } from "@/lib/pages";
 
 export const dynamicParams = false;
@@ -21,6 +21,9 @@ export default async function InfoPage({ params }: { params: Promise<{ slug: str
     <>
       <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <section className="py-16">
+        {page.children && (
+          <div className="container-x mb-12"><CardGrid items={page.children} numbered={false} /></div>
+        )}
         <div className="container-x max-w-3xl space-y-10">
           {page.sections.map((s) => (
             <div key={s.heading}>

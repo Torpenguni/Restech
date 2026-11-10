@@ -15,6 +15,11 @@ export function useSubmit(endpoint: string, arrayFields: string[] = []) {
     for (const key of new Set(fd.keys())) {
       body[key] = arrayFields.includes(key) ? fd.getAll(key) : fd.get(key);
     }
+    if (fd.has("email_confirm") && fd.get("email_confirm") !== fd.get("email")) {
+      setStatus({ state: "error", message: "Email addresses do not match." });
+      return;
+    }
+    delete body.email_confirm;
     body.consent_marketing = fd.get("consent_marketing") === "on";
     const params = new URLSearchParams(window.location.search);
     for (const k of ["utm_source", "utm_medium", "utm_campaign"]) {

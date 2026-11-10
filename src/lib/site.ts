@@ -1,38 +1,55 @@
-// Central event configuration. Everything marked TODO is a placeholder
-// to be replaced with confirmed event facts before launch.
+// Central event configuration.
+// Site structure (menus, page order, URL pattern) mirrors the foodnhotelasia.com (FHA) information
+// architecture. All copy and branding are Restech's own. Items marked TODO are placeholders.
 
 export const event = {
   name: "Restech",
   edition: "Restech 2027",
-  tagline: "Asia's Restaurant Technology & Operations Event",
+  tagline: "Asia's Leading Restaurant Technology & Operations Event",
   // TODO: confirm dates & venue
   startDate: "2027-06-16T09:00:00+07:00",
   dateLabel: "16–18 June 2027",
   venue: "Bangkok, Thailand (venue TBC)",
-  hashtag: "#Restech2027",
+  city: "Bangkok",
+  hashtags: ["#Restech2027", "#Restech", "#RestaurantTech"],
   email: "hello@restech.events", // TODO
   phone: "+66 0 0000 0000", // TODO
 };
 
-// Stats are PROJECTED targets — replace with audited figures.
+// "Restech 2027 by the Numbers" — PROJECTED targets, replace with audited figures.
 export const stats = [
-  { value: "8,000+", label: "Trade visitors" },
+  { value: "8,000+", label: "Attendees" },
   { value: "250+", label: "Exhibitors" },
-  { value: "15+", label: "Countries" },
-  { value: "60+", label: "Speakers" },
+  { value: "10,000", label: "sqm Exhibition Area" },
+  { value: "15+", label: "Countries & Regions" },
 ];
 
-export const cta = {
-  register: { label: "Register Now", href: "/register" },
-  exhibit: { label: "Book a Stand", href: "/book-a-stand" },
-  brochure: { label: "Download Brochure", href: "/brochure" },
-  sponsor: { label: "Talk Sponsorship", href: "/sponsorship" },
-};
-
 export type NavLink = { label: string; href: string };
-export type NavGroup = { title: string; links: NavLink[] };
+
+export const cta = {
+  register: { label: "Register Now", href: "/visitor-registration" },
+  exhibit: { label: "Be an Exhibitor", href: "/book-a-stand" },
+  bookStand: { label: "Book a Stand", href: "/book-a-stand" },
+  brochure: { label: "Download Brochure", href: "/join-mailing-list" },
+  mailingList: { label: "Join Mailing List", href: "/join-mailing-list" },
+  sponsor: { label: "Advertising & Sponsorship", href: "/advertising-sponsorship" },
+  speaker: { label: "Be a Speaker", href: "/be-a-speaker" },
+  exhibitorList: { label: "Exhibitor List", href: "/exhibitor-list" },
+} satisfies Record<string, NavLink>;
+
+export type NavGroup = { title: string; href?: string; links: NavLink[] };
 export type NavItem = { label: string; groups: NavGroup[]; actions: NavLink[] };
 
+const travel: NavGroup = {
+  title: "Travel",
+  links: [
+    { label: "Plan Your Visit", href: "/plan-your-visit" },
+    { label: "Visa Support", href: "/visa-support" },
+    { label: `Visiting ${event.city}`, href: "/visiting-bangkok" },
+  ],
+};
+
+// Main navigation — same 5 menus / groups / action buttons as FHA.
 export const nav: NavItem[] = [
   {
     label: "The Event",
@@ -40,8 +57,8 @@ export const nav: NavItem[] = [
       {
         title: "Overview",
         links: [
-          { label: "About Restech", href: "/about" },
-          { label: "Show Segments", href: "/show-segments" },
+          { label: "About Restech", href: "/about-restech" },
+          { label: "Safe Events", href: "/safe-events" },
           { label: "Sustainability", href: "/sustainability" },
         ],
       },
@@ -49,180 +66,226 @@ export const nav: NavItem[] = [
         title: "Show Information",
         links: [
           { label: "Exhibitor List", href: "/exhibitor-list" },
+          { label: "Show Segments", href: "/show-segments" },
           { label: "Sponsors", href: "/sponsors" },
           { label: "Supporting Organisations", href: "/supporting-organisations" },
-          { label: "Media Partners", href: "/media-partners" },
+          { label: "Media & Knowledge Partners", href: "/media-and-knowledge-partners" },
         ],
       },
       {
         title: "Have a question?",
         links: [
           { label: "FAQs", href: "/faqs" },
-          { label: "Contact Us", href: "/contact" },
+          { label: "Contact Us", href: "/contact-us" },
         ],
       },
     ],
-    actions: [cta.register, cta.exhibit],
+    actions: [{ label: "Register for Restech", href: cta.register.href }, cta.bookStand, cta.mailingList],
   },
   {
-    label: "Highlights",
+    label: "Event Highlights",
     groups: [
       {
         title: "Spotlight",
         links: [
           { label: "Tech Demo Kitchen", href: "/tech-demo-kitchen" },
+          { label: "Robotics & Automation", href: "/robotics-automation" },
+          { label: "Delivery & Cloud Kitchen", href: "/delivery-cloud-kitchen" },
+          { label: "Franchise & Chain Zone", href: "/franchise-chain-zone" },
+          { label: "Hotel F&B Tech", href: "/hotel-fnb-tech" },
           { label: "Startup Alley", href: "/startup-alley" },
-          { label: "Franchise & Chain Zone", href: "/franchise-zone" },
         ],
       },
       {
-        title: "Conference",
+        title: "Conferences",
+        href: "/conferences",
         links: [
-          { label: "Conference Programme", href: "/conference" },
-          { label: "Main Stage", href: "/main-stage" },
-          { label: "Be a Speaker", href: "/be-a-speaker" },
+          { label: "Restech Main Stage", href: "/restech-main-stage" },
+          { label: "Restech Webinar", href: "/webinar" },
+          { label: "Future of Restaurants Conference", href: "/future-of-restaurants-conference" },
+          { label: "Sustainability Summit", href: "/sustainability-summit" },
         ],
       },
       {
         title: "Competitions",
+        href: "/competitions",
         links: [
-          { label: "Startup Pitch", href: "/startup-pitch" },
-          { label: "Restech Awards", href: "/awards" },
+          { label: "Restech Startup Pitch Challenge", href: "/startup-pitch-challenge" },
+          { label: "Restech Innovation Awards", href: "/innovation-awards" },
         ],
       },
     ],
-    actions: [cta.register, { label: "Be a Speaker", href: "/be-a-speaker" }],
+    actions: [{ label: "Register for Restech", href: cta.register.href }, cta.speaker, cta.mailingList],
   },
   {
-    label: "Visit",
+    label: "Visitor",
     groups: [
       {
         title: "Become a Visitor",
         links: [
-          { label: "Why Visit", href: "/why-visit" },
-          { label: "Visitor Registration", href: "/register" },
           { label: "Admission Policy", href: "/admission-policy" },
           { label: "Hosted Buyer Programme", href: "/hosted-buyer-programme" },
+          { label: "Why Visit", href: "/why-visit" },
+          { label: "Visitor Registration", href: "/visitor-registration" },
         ],
       },
       {
         title: "Event Essentials",
         links: [
-          { label: "Plan Your Visit", href: "/plan-your-visit" },
-          { label: "Venue & Floor Plan", href: "/venue" },
-          { label: "Visa Support", href: "/visa-support" },
+          { label: "Venue Map", href: "/venue-map" },
+          { label: `Visiting ${event.city}`, href: "/visiting-bangkok" },
         ],
       },
+      travel,
     ],
-    actions: [cta.register, { label: "Exhibitor List", href: "/exhibitor-list" }],
+    actions: [{ label: "Register for Restech", href: cta.register.href }, cta.exhibitorList, cta.mailingList],
   },
   {
-    label: "Exhibit",
+    label: "Exhibitor",
     groups: [
       {
         title: "Become an Exhibitor",
         links: [
           { label: "Exhibit with Us", href: "/exhibit-with-us" },
           { label: "Book a Stand", href: "/book-a-stand" },
-          { label: "Sponsorship & Advertising", href: "/sponsorship" },
         ],
       },
       {
-        title: "For Exhibitors",
+        title: "For our Exhibitors",
         links: [
-          { label: "Exhibitor Manual", href: "/exhibitor-manual" },
-          { label: "Plan Your Visit", href: "/plan-your-visit" },
-          { label: "Visa Support", href: "/visa-support" },
+          { label: "Advertising & Sponsorship", href: "/advertising-sponsorship" },
+          { label: "Online Exhibitor Manual", href: "/exhibitor-manual" },
         ],
       },
+      travel,
     ],
-    actions: [cta.exhibit, cta.sponsor, cta.brochure],
+    actions: [cta.bookStand, cta.sponsor, cta.brochure],
   },
   {
-    label: "Media",
+    label: "Media Centre",
     groups: [
       {
-        title: "Editorial",
+        title: "Editorials",
         links: [
-          { label: "Restech Insights", href: "/insights" },
+          { label: "Restech Insider", href: "/restech-insider" },
+          { label: "Blog", href: "/blog" },
           { label: "Glossary", href: "/glossary" },
         ],
       },
       {
         title: "Resources",
         links: [
-          { label: "Download Brochure", href: "/brochure" },
-          { label: "Media Gallery", href: "/gallery" },
-          { label: "Press Releases", href: "/press" },
+          { label: "Download Brochure", href: "/join-mailing-list" },
+          { label: "Media Gallery", href: "/media-gallery" },
+          { label: "Press Releases", href: "/press-release" },
         ],
       },
     ],
-    actions: [cta.register, cta.exhibit],
+    actions: [{ label: "Register for Restech", href: cta.register.href }, cta.bookStand, cta.mailingList],
   },
 ];
 
-export const segments = [
-  { slug: "pos-payments", name: "POS & Payments", icon: "💳", desc: "Point-of-sale, payment gateways, QR & cashless." },
-  { slug: "kitchen-tech", name: "Kitchen Automation", icon: "🤖", desc: "KDS, robotics, smart equipment, food safety IoT." },
-  { slug: "delivery-ordering", name: "Ordering & Delivery", icon: "🛵", desc: "Online ordering, aggregators, kiosks, last-mile." },
-  { slug: "crm-loyalty", name: "CRM & Loyalty", icon: "🎯", desc: "Membership, CDP, marketing automation, reviews." },
-  { slug: "supply-chain", name: "Supply Chain & Procurement", icon: "📦", desc: "Inventory, purchasing, central kitchen, cold chain." },
-  { slug: "ai-data", name: "AI & Data", icon: "📊", desc: "BI dashboards, demand forecasting, AI agents." },
-  { slug: "people-ops", name: "Workforce & HR Tech", icon: "👥", desc: "Scheduling, payroll, training, labour analytics." },
-  { slug: "design-fitout", name: "Store Design & Equipment", icon: "🏗️", desc: "Fit-out, smart store formats, energy efficiency." },
+// Key Segments — two groups (FHA: Food & Beverage / HoReCa → Restech: Front of House / Back of House).
+export type Segment = { slug: string; name: string; icon: string; desc: string };
+export const segmentGroups: { title: string; key: string; items: Segment[] }[] = [
+  {
+    title: "Front of House",
+    key: "front-of-house",
+    items: [
+      { slug: "pos-payments", name: "POS & Payments", icon: "💳", desc: "Point-of-sale, payment gateways, QR & cashless." },
+      { slug: "ordering-kiosks", name: "Ordering & Kiosks", icon: "📱", desc: "Self-order kiosks, QR table ordering, online ordering." },
+      { slug: "delivery", name: "Delivery & Aggregators", icon: "🛵", desc: "Aggregator integration, own-channel delivery, last-mile." },
+      { slug: "crm-loyalty", name: "CRM & Loyalty", icon: "🎯", desc: "Membership, CDP, marketing automation." },
+      { slug: "reservations", name: "Reservations & Guest Experience", icon: "📅", desc: "Booking, waitlist, reviews, guest feedback." },
+      { slug: "digital-marketing", name: "Digital Marketing & Social", icon: "📣", desc: "Social commerce, ads, influencer and content tools." },
+    ],
+  },
+  {
+    title: "Back of House",
+    key: "back-of-house",
+    items: [
+      { slug: "kitchen-automation", name: "Kitchen Automation & Robotics", icon: "🤖", desc: "KDS, robotics, smart cooking equipment." },
+      { slug: "supply-chain", name: "Supply Chain & Procurement", icon: "📦", desc: "Inventory, purchasing, central kitchen, cold chain." },
+      { slug: "ai-data", name: "AI, Data & BI", icon: "📊", desc: "Dashboards, forecasting, AI agents." },
+      { slug: "workforce", name: "Workforce & HR Tech", icon: "👥", desc: "Scheduling, payroll, training." },
+      { slug: "food-safety", name: "Food Safety & IoT", icon: "🌡️", desc: "Temperature monitoring, HACCP, compliance." },
+      { slug: "energy-sustainability", name: "Energy & Sustainability", icon: "🌱", desc: "Energy monitoring, food-waste tracking, packaging." },
+    ],
+  },
+];
+export const segments: Segment[] = segmentGroups.flatMap((g) => g.items);
+
+// "What's New" spotlight cards
+export const whatsNew = [
+  { title: "Tech Demo Kitchen", desc: "A working restaurant on the show floor running end-to-end on exhibitor technology.", href: "/tech-demo-kitchen" },
+  { title: "Robotics & Automation", desc: "Cooking robots, automated beverage stations and service robots in action.", href: "/robotics-automation" },
+  { title: "Delivery & Cloud Kitchen", desc: "Solutions for delivery-first brands and virtual kitchens.", href: "/delivery-cloud-kitchen" },
+  { title: "Franchise & Chain Zone", desc: "Tools and services for brands scaling to multiple branches.", href: "/franchise-chain-zone" },
+  { title: "Hotel F&B Tech", desc: "Technology for hotel restaurants, banqueting and room service.", href: "/hotel-fnb-tech" },
 ];
 
+// "New at Restech" feature cards
+export const newAt = [
+  { title: "Startup Alley", desc: "Early-stage restaurant tech companies in one dedicated zone.", href: "/startup-alley" },
+  { title: "Startup Pitch Challenge", desc: "Startups pitch live to investors and restaurant groups.", href: "/startup-pitch-challenge" },
+  { title: "Future of Restaurants Conference", desc: "Operator-led sessions on margin, data and AI.", href: "/future-of-restaurants-conference" },
+];
+
+// "Why Leading Brands Choose Restech" — 6 value-prop cards
 export const whyExhibit = [
-  { title: "Meet decision-makers", desc: "Owners, CFOs, COOs and IT heads of restaurant chains and groups — the people who sign tech budgets." },
-  { title: "One focused category", desc: "Not a general food show: every visitor is here for restaurant technology and operations." },
-  { title: "Pre-matched meetings", desc: "Buyer–supplier matching before the show so your calendar is full on day one." },
-  { title: "Launch platform", desc: "Demo stages, startup pitch and media coverage to launch products to the region." },
-  { title: "Gateway to SEA", desc: "Reach Thailand and Southeast Asia's fastest-growing multi-branch operators." },
-  { title: "Measurable leads", desc: "Lead-scanning and post-show reports so you can prove ROI to your board." },
+  { title: "Unmatched Industry Reach", desc: "Owners, CFOs, COOs and IT heads of restaurant chains and groups — the people who sign tech budgets." },
+  { title: "Gateway to Southeast Asia", desc: "Reach Thailand and the region's fastest-growing multi-branch operators." },
+  { title: "Brand Exposure", desc: "Stages, demo kitchen and media coverage to launch products to the market." },
+  { title: "AI Business Matching", desc: "Pre-scheduled buyer–supplier meetings so your calendar is full on day one." },
+  { title: "Dedicated Segments", desc: "Twelve focused segments put you in front of buyers looking for exactly what you sell." },
+  { title: "Measurable Leads", desc: "Lead scanning and post-show reports to prove ROI to your board." },
 ];
 
 export const whyVisit = [
-  { title: "See it working", desc: "Live demo kitchen showing systems integrated end-to-end — from order to plate to P&L." },
-  { title: "Compare in one day", desc: "Shortlist POS, delivery, CRM and back-office vendors side by side." },
-  { title: "Learn from operators", desc: "Case studies from chains that cut cost and grew margin with technology." },
-  { title: "Hosted buyer perks", desc: "Qualified buyers get VIP lounge, pre-booked meetings and travel support." },
-  { title: "Find what's next", desc: "AI, robotics and automation startups you won't see anywhere else." },
-  { title: "Build your network", desc: "Peer roundtables and networking with fellow owners and operators." },
-];
-
-export const highlights = [
-  { title: "Tech Demo Kitchen", desc: "A working restaurant on the show floor running on exhibitor tech.", href: "/tech-demo-kitchen" },
-  { title: "Startup Alley & Pitch", desc: "Early-stage restaurant tech pitching to investors and chains.", href: "/startup-alley" },
-  { title: "Restech Conference", desc: "Two stages of operator-led sessions on margin, data and AI.", href: "/conference" },
+  { title: "A Complete Ecosystem", desc: "Every system a restaurant runs on, from front counter to back office, under one roof." },
+  { title: "Industry Leaders", desc: "Meet the region's leading POS, delivery, CRM and automation providers." },
+  { title: "Innovation First", desc: "See robotics, AI and automation working live in the Tech Demo Kitchen." },
+  { title: "Dedicated Segments", desc: "Front-of-house and back-of-house zones make it easy to compare vendors." },
+  { title: "Partnerships", desc: "Hosted buyer programme and pre-booked meetings with suppliers." },
+  { title: "Community", desc: "Network with fellow owners, operators and franchise groups." },
 ];
 
 export const testimonials = [
-  { quote: "Placeholder testimonial — replace with a real quote from an exhibitor after the first edition.", name: "Name Surname", role: "Head of Sales, Company" },
-  { quote: "Placeholder testimonial — replace with a real quote from a restaurant group buyer.", name: "Name Surname", role: "COO, Restaurant Group" },
-  { quote: "Placeholder testimonial — replace with a real quote from a partner association.", name: "Name Surname", role: "President, Association" },
+  { quote: "Placeholder — replace with a real quote from a restaurant group buyer.", name: "Name Surname", role: "COO, Restaurant Group", type: "Buyer" },
+  { quote: "Placeholder — replace with a real quote from a trade association or government body.", name: "Name Surname", role: "President, Association", type: "Trade Body" },
+  { quote: "Placeholder — replace with a real quote from an exhibitor.", name: "Name Surname", role: "Head of Sales, Company", type: "Exhibitor" },
 ];
 
 export const sponsorTiers = [
+  { tier: "Headline", count: 1 },
   { tier: "Platinum", count: 2 },
-  { tier: "Gold", count: 4 },
-  { tier: "Silver", count: 6 },
+  { tier: "Gold", count: 3 },
+  { tier: "Silver", count: 4 },
+  { tier: "Bronze", count: 6 },
+];
+
+// Credibility strip (FHA: Held In / Endorsed By / Supported By / certifications) — TODO real partners
+export const credibility = [
+  { label: "Held In", name: "Partner TBC" },
+  { label: "Endorsed By", name: "Partner TBC" },
+  { label: "Supported By", name: "Partner TBC" },
+  { label: "Sustainability Certification", name: "TBC" },
 ];
 
 export const faqs = [
-  { q: "What is Restech?", a: "Restech is a B2B trade event for restaurant technology and operations, bringing together technology suppliers and multi-branch restaurant, café and hospitality operators." },
-  { q: "Who attends?", a: "Restaurant owners, chain operators, franchise groups, hotel F&B leaders, and functional heads in operations, IT, finance, marketing and procurement." },
-  { q: "Is registration free for trade visitors?", a: "Trade visitor registration is free for qualified industry professionals. Admission is restricted to trade visitors aged 18 and above." },
-  { q: "What can I find at the show?", a: "POS and payments, ordering and delivery, kitchen automation, CRM and loyalty, supply chain, AI and data, workforce tools and store design." },
-  { q: "How do I exhibit or sponsor?", a: "Submit the Book a Stand form and our sales team will reply within 2 working days with floor plan, packages and pricing." },
-  { q: "Can startups participate?", a: "Yes — Startup Alley offers compact turnkey booths and a chance to pitch on stage. Apply via the Book a Stand form and choose 'Startup Alley'." },
+  { q: "What is Restech 2027?", a: "Restech is a B2B trade event for restaurant technology and operations, bringing together technology suppliers and restaurant, café and hospitality operators." },
+  { q: "Who attends Restech?", a: "Restaurant owners, chain operators, franchise groups, hotel F&B leaders, and heads of operations, IT, finance, marketing and procurement." },
+  { q: "What types of suppliers can visitors meet?", a: "POS and payments, ordering and delivery, kitchen automation, CRM and loyalty, supply chain, AI and data, workforce and food-safety technology providers." },
+  { q: "Can local technology companies and startups exhibit?", a: "Yes. Local and international companies can book a stand, and early-stage companies can apply for Startup Alley." },
+  { q: "Is Restech relevant for distributors and system integrators?", a: "Yes. Many international vendors look for local distribution and integration partners at the show." },
+  { q: "How can exhibitors increase their visibility?", a: "Through sponsorship, speaking slots, the Tech Demo Kitchen and pre-show business matching. See Advertising & Sponsorship." },
 ];
 
-export const footerLinks: NavLink[] = [
+export const quickLinks: NavLink[] = [
   { label: "Book a Stand", href: "/book-a-stand" },
-  { label: "Sponsorship", href: "/sponsorship" },
-  { label: "Download Brochure", href: "/brochure" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Advertising & Sponsorship", href: "/advertising-sponsorship" },
+  { label: "Download Brochure", href: "/join-mailing-list" },
+  { label: "Contact Us", href: "/contact-us" },
   { label: "Site Map", href: "/sitemap" },
 ];
 

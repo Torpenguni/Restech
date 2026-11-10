@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageHero } from "@/components/Sections";
-import { footerLinks, nav } from "@/lib/site";
+import { quickLinks, nav } from "@/lib/site";
 
 export const metadata = { title: "Site Map" };
 
@@ -22,7 +22,7 @@ export default function SiteMap() {
           ))}
         </div>
         <div className="container-x mt-10 flex flex-wrap gap-4 text-sm">
-          {footerLinks.map((l) => <Link key={l.href} href={l.href} className="text-ink/60 hover:text-brand">{l.label}</Link>)}
+          {quickLinks.map((l) => <Link key={l.href} href={l.href} className="text-ink/60 hover:text-brand">{l.label}</Link>)}
         </div>
       </section>
     </>

@@ -23,7 +23,7 @@ export default function BrochureForm() {
       <Input name="email" label="Business email" type="email" />
       <Input name="company" label="Company" />
       <p className="text-xs text-ink/60">
-        By downloading, you agree to receive Restech updates. See our <a href="/privacy" className="underline">Privacy Policy</a>.
+        By downloading, you agree to receive Restech updates. See our <a href="/privacy-policy" className="underline">Privacy Policy</a>.
       </p>
       <ErrorNote message={status.state === "error" ? status.message : undefined} />
       <Submit loading={status.state === "loading"} label="Get the brochure" />

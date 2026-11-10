@@ -20,15 +20,25 @@ export default function ExhibitorForm() {
         <Input name="first_name" label="First name" />
         <Input name="last_name" label="Last name" />
         <Input name="email" label="Business email" type="email" />
+        <Input name="email_confirm" label="Confirm business email" type="email" />
         <Input name="phone" label="Phone" type="tel" />
         <Input name="company" label="Company" />
         <Input name="job_title" label="Job title" />
         <Input name="website" label="Company website" type="url" required={false} placeholder="https://" />
         <Input name="country" label="Country" />
         <Select name="segment" label="Main product segment" options={segmentNames} />
-        <Select name="participation" label="Interested in" options={participation} />
         <Select name="stand_size" label="Preferred stand size" options={standSizes} required={false} />
       </div>
+      <fieldset>
+        <legend className="label">Interested in <span className="text-brand">*</span></legend>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          {participation.map((p, i) => (
+            <label key={p} className="flex items-center gap-2 text-sm">
+              <input type="radio" name="participation" value={p} required={i === 0} className="accent-brand" /> {p}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label className="block">
         <span className="label">Products / solutions you want to showcase <span className="text-brand">*</span></span>
         <textarea name="products" required rows={4} className="field" />

@@ -15,12 +15,12 @@ export default function ExhibitWithUs() {
   return (
     <>
       <PageHero eyebrow="Exhibit" title="Put your solution in front of the people who buy restaurant tech" intro="Restech is the only event in the region focused entirely on restaurant technology and operations.">
-        <Link href={cta.exhibit.href} className="btn-primary">I&apos;m ready to exhibit</Link>
-        <Link href={cta.brochure.href} className="btn-ghost">{cta.brochure.label}</Link>
+        <Link href={cta.bookStand.href} className="btn-primary uppercase">I&apos;m ready to exhibit!</Link>
+        <Link href={cta.brochure.href} className="btn-ghost uppercase">{cta.brochure.label}</Link>
       </PageHero>
       <section className="py-20">
         <div className="container-x">
-          <SectionHead eyebrow="Why Restech" title="Why leading brands exhibit" />
+          <SectionHead eyebrow="Why Restech" title="Why Leading Brands Choose Restech" />
           <CardGrid items={whyExhibit} />
         </div>
       </section>
@@ -31,12 +31,12 @@ export default function ExhibitWithUs() {
             <h2 className="h2 mt-2">Want more than a stand?</h2>
             <p className="mt-2 text-white/70">Stage, registration, lanyard, networking and digital packages.</p>
           </div>
-          <Link href={cta.sponsor.href} className="btn-lime">{cta.sponsor.label}</Link>
+          <Link href={cta.sponsor.href} className="btn-lime uppercase">Let&apos;s talk sponsorship</Link>
         </div>
       </section>
       <section className="py-20">
         <div className="container-x">
-          <SectionHead eyebrow="How it works" title="4 steps to exhibit" />
+          <SectionHead eyebrow="How it works" title="How to Register as an Exhibitor" />
           <ol className="grid gap-5 md:grid-cols-4">
             {steps.map((s, i) => (
               <li key={s.title} className="rounded-2xl border border-ink/10 p-6">
@@ -48,9 +48,12 @@ export default function ExhibitWithUs() {
           </ol>
         </div>
       </section>
+      <section className="py-6">
+        <p className="container-x text-center text-xs text-ink/50">Government incentive / endorsement details for exhibitors (e.g. trade promotion support) — TBC.</p>
+      </section>
       <section className="bg-mist py-20">
         <div className="container-x">
-          <SectionHead eyebrow="Voices" title="From our exhibitors" />
+          <SectionHead title="Voices from the Show Floor" />
           <Testimonials />
         </div>
       </section>

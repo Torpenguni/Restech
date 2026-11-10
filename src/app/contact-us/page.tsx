@@ -5,15 +5,15 @@ import { cta, event } from "@/lib/site";
 export const metadata = { title: "Contact Us" };
 
 const teams = [
-  { title: "Exhibiting & Sponsorship", desc: "Stands, packages and pricing.", link: cta.exhibit },
+  { title: "Exhibiting & Sponsorship", desc: "Stands, packages and pricing.", link: cta.bookStand },
   { title: "Visiting", desc: "Registration, badges and hosted buyers.", link: cta.register },
-  { title: "Media & Partnerships", desc: "Press accreditation and media partners.", link: { label: "Press", href: "/press" } },
+  { title: "Media & Partnerships", desc: "Press accreditation and media partners.", link: { label: "Press Releases", href: "/press-release" } },
 ];
 
 export default function Contact() {
   return (
     <>
-      <PageHero eyebrow="Have a question?" title="Contact Us" intro={`Email ${event.email} · Tel ${event.phone}`} />
+      <PageHero eyebrow="The Event" title="Contact Us" intro={`Email ${event.email} · Tel ${event.phone}`} />
       <section className="py-16">
         <div className="container-x grid gap-6 md:grid-cols-3">
           {teams.map((t) => (

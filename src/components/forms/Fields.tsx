@@ -36,7 +36,7 @@ export function Consent() {
         <span>I agree to receive event news and offers from Restech and its partners. I can unsubscribe at any time.</span>
       </label>
       <p className="text-xs text-ink/60">
-        By submitting, you agree to our <a href="/privacy" className="underline">Privacy Policy</a>. Your data is processed in line with Thailand&apos;s PDPA.
+        By submitting, you agree to our <a href="/privacy-policy" className="underline">Privacy Policy</a>. Your data is processed in line with Thailand&apos;s PDPA.
       </p>
     </div>
   );
