@@ -69,14 +69,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Countdown bar */}
-      <section className="bg-paper py-6 md:py-8">
-        <div className="container-x">
-          <div className="grid items-center gap-5 rounded-3xl bg-mist px-6 py-6 text-center md:grid-cols-[1fr_auto_1fr] md:gap-8 md:px-10 md:text-left">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-ink/80">Countdown to {event.edition}</p>
-            <Countdown date={event.startDate} size="lg" />
-            <p className="text-sm text-ink/65 md:justify-self-end">Opening hours: {event.hours}<br className="hidden md:block" /> (Bangkok time)</p>
-          </div>
+      {/* 2. Countdown bar — compact glass tiles on dark, continues the hero */}
+      <section className="border-t border-white/10 bg-ink text-white">
+        <div className="container-x flex flex-col items-center justify-between gap-4 py-6 text-center md:flex-row md:text-left">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Countdown to {event.edition}</p>
+          <Countdown date={event.startDate} />
+          <p className="text-sm text-white/60">Opening hours: {event.hours} (Bangkok time)</p>
         </div>
       </section>
 
@@ -250,7 +248,6 @@ export default function Home() {
           <p className="eyebrow !text-saffron">{event.dateLabel} · {event.city}</p>
           <h2 className="font-display mt-4 text-4xl font-semibold md:text-6xl">Be part of <em className="text-saffron">{event.edition}</em></h2>
           <p className="mt-5 max-w-xl text-white/75">{event.theme} — limited stands available in each zone.</p>
-          <div className="mt-8"><Countdown date={event.startDate} /></div>
           <div className="mt-10"><TripleCta /></div>
         </div>
       </section>
