@@ -91,6 +91,7 @@ export const cta = {
   sponsor: { label: "Advertising & Sponsorship", href: "/advertising-sponsorship" },
   speaker: { label: "Be a Speaker", href: "/be-a-speaker" },
   exhibitorList: { label: "Exhibitor List", href: "/exhibitor-list" },
+  businessMatching: { label: "Apply for Business Matching", href: "/business-matching" },
 } satisfies Record<string, NavLink>;
 
 export type NavGroup = { title: string; href?: string; links: NavLink[] };

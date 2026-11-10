@@ -4,7 +4,7 @@ import NewsletterForm from "./forms/NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink pb-20 text-white md:pb-0">
+    <footer className="bg-ink pb-24 text-white md:pb-28">
       <div className="container-x border-b border-white/10 py-14 md:py-20">
         <p className="eyebrow">{event.dateLabel} · {event.city}, Thailand</p>
         <p className="font-display mt-4 max-w-4xl text-3xl font-semibold leading-[1.15] md:text-5xl">

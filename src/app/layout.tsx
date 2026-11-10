@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RegisterPopup from "@/components/RegisterPopup";
-import MobileCtaBar from "@/components/MobileCtaBar";
+import FloatingCta from "@/components/FloatingCta";
 import { event } from "@/lib/site";
 
 const prompt = Prompt({ subsets: ["latin", "thai"], weight: ["300", "400", "500", "600", "700"], variable: "--font-prompt", display: "swap" });
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <RegisterPopup />
-        <MobileCtaBar />
+        <FloatingCta />
       </body>
     </html>
   );
