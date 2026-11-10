@@ -105,7 +105,7 @@ export default function Home() {
           </div>
           <div className="grid h-[15rem] grid-cols-5 grid-rows-6 gap-2 sm:h-[22rem] md:h-[32rem] md:gap-3">
             <img src={photos.showFloor} alt="Visitors filling the aisles of the Restech show floor" className="photo col-span-3 row-span-6 h-full w-full rounded-2xl" loading="lazy" />
-            <img src={photos.mainStage} alt="Full audience at the Restech Main Stage" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
+            <img src={photos.networking} alt="Restaurant leaders networking at Restech" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
             <img src={photos.boothCrowd} alt="Visitors at an exhibitor demo counter" className="photo col-span-2 row-span-3 h-full w-full rounded-2xl" loading="lazy" />
           </div>
         </div>
